@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cq4ty641r4mwy"]
 
-[ext_resource type="Script" path="res://Scripts/Utilities/OneShotParticles.gd" id="1_sn5y5"]
+[ext_resource type="Script" path="res://Scripts/Utilities/one_shot_particles.gd" id="1_sn5y5"]
 
 [sub_resource type="Gradient" id="Gradient_bx3iq"]
 colors = PackedColorArray(0.87451, 0.443137, 0.14902, 1, 0.87451, 0.443137, 0.14902, 1)

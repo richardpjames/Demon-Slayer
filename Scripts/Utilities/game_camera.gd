@@ -14,10 +14,12 @@ func _ready() -> void:
 	# Shake the camera when the following signals are emitted
 	SignalManager.on_player_hit.connect(shake)
 
-func shake() -> void:
-	# Tween between the maximum intensity to zero over the duration
-	var shake_tween: Tween = get_tree().create_tween()
-	shake_tween.tween_method(apply_noise, shake_intensity ,0, shake_duration)
+func shake(damage: int) -> void:
+	# When changing levels this can sometimes cause an issue
+	if(get_tree()):
+		# Tween between the maximum intensity to zero over the duration
+		var shake_tween: Tween = get_tree().create_tween()
+		shake_tween.tween_method(apply_noise, shake_intensity ,0, shake_duration)
 
 # Apply a random noise to the camera - to be used in tweening
 func apply_noise(intensity: float) -> void:

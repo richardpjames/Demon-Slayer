@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://1aemxvhscymx"]
 
-[ext_resource type="Script" path="res://Scripts/Projectile.gd" id="1_pltvn"]
+[ext_resource type="Script" path="res://Scripts/projectile.gd" id="1_pltvn"]
 [ext_resource type="Texture2D" uid="uid://b8n7yay4x0sgk" path="res://Assets/Projectiles/Projectile.png" id="2_5w5mr"]
-[ext_resource type="PackedScene" uid="uid://cq4ty641r4mwy" path="res://Scenes/FX/ProjectileExplosion.tscn" id="2_wri8y"]
+[ext_resource type="PackedScene" uid="uid://cq4ty641r4mwy" path="res://Scenes/FX/projectile_explosion.tscn" id="2_wri8y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7li6b"]
 radius = 6.08276

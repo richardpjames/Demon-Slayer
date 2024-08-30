@@ -68,15 +68,11 @@ func _attack() -> void:
 # This method provides basics before being overridden by extending classes
 func take_damage(damage: int) -> void:
 	# Emit the signal that we are hit
-	SignalManager.on_player_hit.emit()
-	# Subtract the amount of damage from health (set in Enemy class)
-	health -= damage
+	SignalManager.on_player_hit.emit(damage)
 	# Instantiate the blood particles
 	var particles = blood_particles.instantiate()
 	# Put it where the projectile was destroyed
 	particles.global_position = global_position
 	# Add to the root so not attached to this position
-	get_tree().root.add_child(particles)
-	# Determine whether to die
-	if(health <= 0):
-		print("Dead!")
+	if(get_tree()):
+		get_tree().root.add_child(particles)

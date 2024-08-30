@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="Demon-Slayer"
-run/main_scene="res://Scenes/DemoScene.tscn"
+run/main_scene="res://Scenes/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-SignalManager="*res://Scripts/Managers/SignalManager.gd"
+SignalManager="*res://Scripts/Managers/signal_manager.gd"
+GameManager="*res://Scripts/Managers/game_manager.gd"
 
 [global_group]
 
