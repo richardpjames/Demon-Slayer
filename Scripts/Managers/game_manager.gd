@@ -22,17 +22,22 @@ func _reset_game() -> void:
 # Start the game by resetting statistics and loading the game scene
 func _start_game() -> void:
 	_reset_game()
-	get_tree().change_scene_to_packed(START_GAME)
+	# Call deferred to ensure all other processing complete
+	get_tree().call_deferred("change_scene_to_packed", START_GAME)
 
 # Show the game over screen on player death
 func _game_over() -> void:
-	get_tree().change_scene_to_packed(GAME_OVER)
+	# Call deferred to ensure all other processing complete
+	get_tree().call_deferred("change_scene_to_packed", GAME_OVER)
 
 # Show the main menu when requested
 func _main_menu() -> void:
-	get_tree().change_scene_to_packed(MAIN_MENU)
+	# Call deferred to ensure all other processing complete
+	get_tree().call_deferred("change_scene_to_packed", MAIN_MENU)
 
 func _take_damage(damage: int) -> void:
 	_health = _health - damage
+	# Let the UI etc. know that the health has changed
+	SignalManager.on_player_health_updated.emit(_health)
 	if(_health <= 0):
 		SignalManager.on_player_death.emit()

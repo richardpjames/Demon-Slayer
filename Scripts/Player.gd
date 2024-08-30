@@ -11,7 +11,6 @@ extends CharacterBody2D
 
 # Private variables
 var _direction: Vector2 = Vector2.DOWN
-var _facing_direction: Vector2 = Vector2.DOWN
 var _attack_end_time: float = 0
 
 # For tracking state
@@ -19,7 +18,7 @@ enum State {IDLE, RUNNING, ATTACKING}
 var current_state: State = State.IDLE
 
 # Called each frame
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# Get the player direction from input
 	_direction = _set_direction()
 	# Flip the sprite depending on direction
@@ -36,7 +35,7 @@ func _process(delta: float) -> void:
 	_attack()
 
 # Called each physics frame
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	# Velocity is built into the character controller
 	velocity = _direction * speed
 	# Move the character based on velocity
@@ -74,5 +73,4 @@ func take_damage(damage: int) -> void:
 	# Put it where the projectile was destroyed
 	particles.global_position = global_position
 	# Add to the root so not attached to this position
-	if(get_tree()):
-		get_tree().root.add_child(particles)
+	get_tree().root.add_child(particles)

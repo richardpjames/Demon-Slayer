@@ -11,4 +11,4 @@ func spawn() -> void:
 	# Set the correct position
 	monster.global_position = global_position
 	# Add into the scene tree in the correct place
-	monster_node.add_child(monster)
+	monster_node.call_deferred("add_child", monster)

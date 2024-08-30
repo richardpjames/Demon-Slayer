@@ -11,6 +11,7 @@ extends CharacterBody2D
 @export var blood_particles: PackedScene
 
 # Get a reference to the player as a private variable
+@warning_ignore("unused_private_class_variable")
 @onready var _player: Player = get_tree().get_first_node_in_group("Player")
 
 # This method provides basics before being overridden by extending classes

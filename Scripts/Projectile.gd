@@ -19,7 +19,7 @@ func _ready() -> void:
 	# Attack the on_body_entered to the signal
 	body_entered.connect(_on_body_entered)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# If the expiry time has passed then destroy the object
 	if(Time.get_ticks_msec() > _expiry_time):
 		queue_free()
