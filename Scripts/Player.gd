@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var speed: int
 @export var attack_cooldown_time: float
 @export var projectile_scene: PackedScene
+@export var blood_particles: PackedScene
 
 # Private variables
 var _direction: Vector2 = Vector2.DOWN
@@ -58,3 +59,18 @@ func _attack() -> void:
 		# Attach the projectile to the tree
 		get_tree().root.add_child(projectile)
 		
+# This method provides basics before being overridden by extending classes
+func take_damage(damage: int) -> void:
+	# Emit the signal that we are hit
+	SignalManager.on_player_hit.emit()
+	# Subtract the amount of damage from health (set in Enemy class)
+	health -= damage
+	# Instantiate the blood particles
+	var particles = blood_particles.instantiate()
+	# Put it where the projectile was destroyed
+	particles.global_position = global_position
+	# Add to the root so not attached to this position
+	get_tree().root.add_child(particles)
+	# Determine whether to die
+	if(health <= 0):
+		print("Dead!")

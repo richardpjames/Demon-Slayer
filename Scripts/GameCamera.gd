@@ -11,6 +11,8 @@ var noise: FastNoiseLite
 # Initialise the noise on ready
 func _ready() -> void:
 	noise = FastNoiseLite.new()
+	# Shake the camera when the following signals are emitted
+	SignalManager.on_player_hit.connect(shake)
 
 func shake() -> void:
 	# Tween between the maximum intensity to zero over the duration

@@ -6,11 +6,15 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3nwt7"]
 
-[node name="Demon" type="CharacterBody2D" groups=["Enemy"]]
+[node name="Demon" type="CharacterBody2D" node_paths=PackedStringArray("sprite") groups=["Enemy"]]
 motion_mode = 1
 script = ExtResource("1_175dc")
+damage = 1
+attack_distance = 35.0
+attack_cooldown = 2.0
+sprite = NodePath("Sprite2D")
 health = 5
-activation_distance = 200.0
+activation_distance = 300.0
 speed = 15
 blood_particles = ExtResource("2_g1uco")
 
