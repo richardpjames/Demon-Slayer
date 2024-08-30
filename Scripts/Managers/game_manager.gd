@@ -5,8 +5,8 @@ var _max_health: int = 10
 var _health: int
 # Scenes which are required - main menu, game over and main level
 const START_GAME = preload("res://Scenes/demo_scene.tscn")
-const MAIN_MENU = preload("res://Scenes/main_menu.tscn")
-const GAME_OVER = preload("res://Scenes/game_over.tscn")
+const MAIN_MENU = preload("res://Scenes/UI/main_menu.tscn")
+const GAME_OVER = preload("res://Scenes/UI/game_over.tscn")
 
 # Connect to signals to deal with events in the game
 func _ready() -> void:
@@ -18,6 +18,7 @@ func _ready() -> void:
 # Reset stats to put health back to max
 func _reset_game() -> void:
 	_health = _max_health
+	SignalManager.on_player_health_updated.emit(_health)
 	
 # Start the game by resetting statistics and loading the game scene
 func _start_game() -> void:
@@ -41,3 +42,7 @@ func _take_damage(damage: int) -> void:
 	SignalManager.on_player_health_updated.emit(_health)
 	if(_health <= 0):
 		SignalManager.on_player_death.emit()
+
+# Allow direct access to health if needed
+func get_player_health() -> int:
+	return _health

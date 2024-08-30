@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3vdfbbuf72m8"]
+
+[ext_resource type="Script" path="res://Scripts/UI/hud.gd" id="1_6qppc"]
+[ext_resource type="PackedScene" uid="uid://nsii40d8e4h0" path="res://Scenes/UI/full_heart.tscn" id="2_g3dfi"]
+
+[node name="HUD" type="CanvasLayer" node_paths=PackedStringArray("hearts_container")]
+script = ExtResource("1_6qppc")
+hearts_container = NodePath("Container/Hearts")
+full_heart_scene = ExtResource("2_g3dfi")
+
+[node name="Container" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Hearts" type="HBoxContainer" parent="Container"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
