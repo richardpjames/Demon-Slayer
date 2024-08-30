@@ -37,13 +37,7 @@ func set_direction() -> Vector2:
 	# Initialise the direction as zero
 	var direction = Vector2.ZERO
 	# See which buttons are being pressed and set the vector accordingly
-	if(Input.is_action_pressed("Up")):
-		direction.y -= 1
-	if(Input.is_action_pressed("Down")):
-		direction.y += 1
-	if(Input.is_action_pressed("Left")):
-		direction.x -= 1
-	if(Input.is_action_pressed("Right")):
-		direction.x += 1
+	direction.y = Input.get_axis("Up", "Down")
+	direction.x = Input.get_axis("Left", "Right")
 	# Return the direction
 	return direction
