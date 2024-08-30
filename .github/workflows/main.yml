@@ -13,7 +13,7 @@ jobs:
         run: |
           wget -q https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_linux.x86_64.zip
           unzip Godot_v4.3-stable_linux.x86_64.zip
-          chmod +x ./Godot_v4.3-stable_linux_x86_64/Godot_v4.3-stable_linux.x86_64
+          chmod +x ./Godot_v4.3-stable_linux.x86_64/Godot_v4.3-stable_linux.x86_64
       - name: Download Export Templates
         run: |
           wget -q https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_export_templates.tpz
@@ -23,7 +23,7 @@ jobs:
       - name: Run Build
         run: |
           mkdir -p build/windows
-          ./Godot_v4.3-stable_linux_x86_64/Godot_v4.3-stable_linux.x86_64 -v --headless --export-release "Windows" ./build/windows/DemonSlayer.exe
+          ./Godot_v4.3-stable_linux.x86_64/Godot_v4.3-stable_linux.x86_64 -v --headless --export-release "Windows" ./build/windows/DemonSlayer.exe
           cd build/windows
           zip -r ../../DemonSlayer-Windows.zip *
       - uses: ncipollo/release-action@v1
