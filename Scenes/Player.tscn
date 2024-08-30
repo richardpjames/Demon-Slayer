@@ -6,7 +6,8 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t3qxr"]
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+collision_layer = 3
 motion_mode = 1
 script = ExtResource("1_jo20q")
 health = 10

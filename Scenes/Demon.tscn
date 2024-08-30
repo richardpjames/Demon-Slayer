@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2n56kgy5jvyd"]
+
+[ext_resource type="Script" path="res://Scripts/Demon.gd" id="1_175dc"]
+[ext_resource type="Texture2D" uid="uid://dxvva3i17hcrx" path="res://Assets/Characters/Demon.png" id="2_1tfn2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3nwt7"]
+
+[node name="Demon" type="CharacterBody2D"]
+motion_mode = 1
+script = ExtResource("1_175dc")
+health = 5
+activation_distance = 200.0
+speed = 15
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_1tfn2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_3nwt7")

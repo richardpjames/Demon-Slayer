@@ -7,9 +7,9 @@ extends CharacterBody2D
 @export var attack_cooldown_time: float
 
 # Private variables
-var direction: Vector2 = Vector2.DOWN
-var facing_direction: Vector2 = Vector2.DOWN
-var attack_end_time: float = 0
+var _direction: Vector2 = Vector2.DOWN
+var _facing_direction: Vector2 = Vector2.DOWN
+var _attack_end_time: float = 0
 
 # For tracking state
 enum State {IDLE, RUNNING, ATTACKING}
@@ -18,7 +18,7 @@ var current_state: State = State.IDLE
 # Called each frame
 func _process(delta: float) -> void:
 	# Get the player direction from input
-	direction = set_direction()
+	_direction = set_direction()
 	# Set the player state
 	if(velocity != Vector2.ZERO):
 		current_state = State.RUNNING
@@ -28,7 +28,7 @@ func _process(delta: float) -> void:
 # Called each physics frame
 func _physics_process(delta: float) -> void:
 	# Velocity is built into the character controller
-	velocity = direction * speed
+	velocity = _direction * speed
 	# Move the character based on velocity
 	move_and_slide()
 
