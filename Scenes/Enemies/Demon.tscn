@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://c2n56kgy5jvyd"]
 
-[ext_resource type="Script" path="res://Scripts/Demon.gd" id="1_175dc"]
+[ext_resource type="Script" path="res://Scripts/Enemies/Demon.gd" id="1_175dc"]
 [ext_resource type="Texture2D" uid="uid://dxvva3i17hcrx" path="res://Assets/Characters/Demon.png" id="2_1tfn2"]
-[ext_resource type="PackedScene" uid="uid://b6iud7ni2webl" path="res://Scenes/FX/RedSplash.tscn" id="2_g1uco"]
+[ext_resource type="PackedScene" uid="uid://b6iud7ni2webl" path="res://Scenes/FX/BloodParticles.tscn" id="2_g1uco"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3nwt7"]
 

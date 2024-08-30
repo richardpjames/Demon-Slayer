@@ -17,7 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-SignalManager="*res://Scripts/SignalManager.gd"
+SignalManager="*res://Scripts/Managers/SignalManager.gd"
 
 [global_group]
 

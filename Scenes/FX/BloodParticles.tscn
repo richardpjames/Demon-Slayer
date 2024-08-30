@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b6iud7ni2webl"]
 
-[ext_resource type="Script" path="res://Scripts/OneShotParticles.gd" id="1_8vf8b"]
+[ext_resource type="Script" path="res://Scripts/Utilities/OneShotParticles.gd" id="1_q3x2d"]
 
 [sub_resource type="Gradient" id="Gradient_bx3iq"]
 colors = PackedColorArray(0.568627, 0.152941, 0.152941, 1, 0.568627, 0.152941, 0.152941, 1)
@@ -28,4 +28,4 @@ amount = 50
 process_material = SubResource("ParticleProcessMaterial_8yp8n")
 one_shot = true
 explosiveness = 1.0
-script = ExtResource("1_8vf8b")
+script = ExtResource("1_q3x2d")

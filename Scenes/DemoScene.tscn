@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=4 uid="uid://c8r6h878ajo4x"]
 
-[ext_resource type="PackedScene" uid="uid://c2n56kgy5jvyd" path="res://Scenes/Demon.tscn" id="2_cnhok"]
+[ext_resource type="PackedScene" uid="uid://c2n56kgy5jvyd" path="res://Scenes/Enemies/Demon.tscn" id="2_cnhok"]
 [ext_resource type="PackedScene" uid="uid://bga08ako617jr" path="res://Scenes/Player.tscn" id="2_lv4fh"]
 [ext_resource type="TileSet" uid="uid://c3vwjafl8hd6p" path="res://Tiles/TileSet.tres" id="2_nleji"]
 [ext_resource type="Script" path="res://Scripts/Spawner.gd" id="4_6w8hu"]
