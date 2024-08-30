@@ -7,6 +7,7 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3nwt7"]
 
 [node name="Demon" type="CharacterBody2D" node_paths=PackedStringArray("sprite") groups=["Enemy"]]
+collision_mask = 2
 motion_mode = 1
 script = ExtResource("1_175dc")
 damage = 1

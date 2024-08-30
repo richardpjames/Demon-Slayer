@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var attack_cooldown_time: float
 @export var projectile_scene: PackedScene
 @export var blood_particles: PackedScene
+@export var sprite: Sprite2D
 
 # Private variables
 var _direction: Vector2 = Vector2.DOWN
@@ -21,6 +22,11 @@ var current_state: State = State.IDLE
 func _process(delta: float) -> void:
 	# Get the player direction from input
 	_direction = _set_direction()
+	# Flip the sprite depending on direction
+	if(_direction.x < 0):
+		sprite.flip_h = true
+	if(_direction.x > 0):
+		sprite.flip_h = false
 	# Set the player state
 	if(velocity != Vector2.ZERO):
 		current_state = State.RUNNING

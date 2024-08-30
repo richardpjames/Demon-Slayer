@@ -13,6 +13,12 @@ var _attack_end_time: float = 0
 
 func _process(delta: float) -> void:
 	_direction = _determine_direction()
+	# Flip the sprite depending on direction
+	if(_direction.x < 0):
+		sprite.flip_h = true
+	if(_direction.x > 0):
+		sprite.flip_h = false
+	# Handle any attacking
 	_attack()
 
 func _physics_process(delta: float) -> void:

@@ -8,7 +8,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t3qxr"]
 
-[node name="Player" type="CharacterBody2D" groups=["Player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprite") groups=["Player"]]
 collision_layer = 3
 motion_mode = 1
 script = ExtResource("1_jo20q")
@@ -17,6 +17,7 @@ speed = 200
 attack_cooldown_time = 0.25
 projectile_scene = ExtResource("2_htgr2")
 blood_particles = ExtResource("3_0o2yn")
+sprite = NodePath("Sprite2D")
 
 [node name="GameCamera" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)

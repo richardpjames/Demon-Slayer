@@ -26,3 +26,4 @@ func take_damage(damage: int) -> void:
 	# Determine whether to die
 	if(health <= 0):
 		queue_free()
+		SignalManager.on_enemy_killed.emit()
