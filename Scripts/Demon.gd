@@ -5,13 +5,13 @@ extends Enemy
 var _direction: Vector2 = Vector2.ZERO
 
 func _process(delta: float) -> void:
-	_direction = determine_direction()
+	_direction = _determine_direction()
 
 func _physics_process(delta: float) -> void:
 		velocity = _direction * speed
 		move_and_slide()
 
-func determine_direction() -> Vector2:
+func _determine_direction() -> Vector2:
 	var direction: Vector2 = Vector2.ZERO
 	# Determine how far away we are from the player
 	var distance_to_player: float = global_position.distance_to(_player.global_position)

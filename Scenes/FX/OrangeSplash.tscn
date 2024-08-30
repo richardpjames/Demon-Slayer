@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://cq4ty641r4mwy"]
+
+[ext_resource type="Script" path="res://Scripts/OneShotParticles.gd" id="1_sn5y5"]
+
+[sub_resource type="Gradient" id="Gradient_bx3iq"]
+colors = PackedColorArray(0.87451, 0.443137, 0.14902, 1, 0.87451, 0.443137, 0.14902, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_et0ab"]
+gradient = SubResource("Gradient_bx3iq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_w4gb0"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+scale_max = 3.0
+color_ramp = SubResource("GradientTexture1D_et0ab")
+hue_variation_min = -2.23517e-08
+hue_variation_max = -2.23517e-08
+
+[node name="OrangeSplash" type="GPUParticles2D"]
+emitting = false
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_w4gb0")
+one_shot = true
+explosiveness = 1.0
+script = ExtResource("1_sn5y5")

@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://1aemxvhscymx"]
+
+[ext_resource type="Script" path="res://Scripts/Projectile.gd" id="1_pltvn"]
+[ext_resource type="Texture2D" uid="uid://b8n7yay4x0sgk" path="res://Assets/Projectiles/Projectile.png" id="2_5w5mr"]
+[ext_resource type="PackedScene" uid="uid://cq4ty641r4mwy" path="res://Scenes/FX/OrangeSplash.tscn" id="2_wri8y"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7li6b"]
+radius = 6.08276
+
+[node name="Projectile" type="Area2D"]
+script = ExtResource("1_pltvn")
+speed = 200
+lifetime = 3.0
+particles = ExtResource("2_wri8y")
+damage = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("2_5w5mr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7li6b")
