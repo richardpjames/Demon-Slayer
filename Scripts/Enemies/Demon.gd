@@ -5,7 +5,7 @@ extends Enemy
 @export var damage: int
 @export var attack_distance: float
 @export var attack_cooldown: float
-@export var sprite: Sprite2D
+@export var sprites: Node2D
 
 # Private variables
 var _direction: Vector2 = Vector2.ZERO
@@ -13,17 +13,12 @@ var _attack_end_time: float = 0
 
 func _process(_delta: float) -> void:
 	_direction = _determine_direction()
-	# Flip the sprite depending on direction
-	if(_direction.x < 0):
-		sprite.flip_h = true
-	if(_direction.x > 0):
-		sprite.flip_h = false
 	# Handle any attacking
 	_attack()
 
 func _physics_process(_delta: float) -> void:
-		velocity = _direction * speed
-		move_and_slide()
+	velocity = _direction * speed
+	move_and_slide()
 
 func _determine_direction() -> Vector2:
 	var direction: Vector2 = Vector2.ZERO
@@ -49,8 +44,8 @@ func _attack() -> void:
 		# Tween animation of the sprite hitting the player
 		var tween = get_tree().create_tween()
 		# Tween the sprite to the position of the player and then back again
-		tween.tween_property(sprite, "global_position",_player.global_position, 0.15).set_trans(Tween.TRANS_QUAD)
-		tween.tween_property(sprite, "global_position", global_position, 0.15).set_trans(Tween.TRANS_QUAD)
+		tween.tween_property(sprites, "global_position",_player.global_position, 0.15).set_trans(Tween.TRANS_QUAD)
+		tween.tween_property(sprites, "global_position", global_position, 0.15).set_trans(Tween.TRANS_QUAD)
 		# Attack the player (take damage)
 		_player.take_damage(damage)
 		# Reset the cooldown (multiply by 1000 to deal with milliseconds)

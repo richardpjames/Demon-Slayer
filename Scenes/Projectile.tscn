@@ -5,11 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://cq4ty641r4mwy" path="res://Scenes/FX/projectile_explosion.tscn" id="2_wri8y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7li6b"]
-radius = 6.08276
+radius = 47.676
 
 [node name="Projectile" type="Area2D"]
 script = ExtResource("1_pltvn")
-speed = 200
+speed = 2500
 lifetime = 3.0
 particles = ExtResource("2_wri8y")
 damage = 1

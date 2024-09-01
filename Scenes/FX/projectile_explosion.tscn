@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://cq4ty641r4mwy"]
+[gd_scene load_steps=6 format=3 uid="uid://cq4ty641r4mwy"]
 
+[ext_resource type="Texture2D" uid="uid://ipvgqnn0e6j" path="res://Assets/Default Particle.png" id="1_2siq4"]
 [ext_resource type="Script" path="res://Scripts/Utilities/one_shot_particles.gd" id="1_sn5y5"]
 
 [sub_resource type="Gradient" id="Gradient_bx3iq"]
@@ -14,18 +15,22 @@ emission_shape = 1
 emission_sphere_radius = 1.0
 direction = Vector3(0, 0, 0)
 spread = 180.0
-initial_velocity_min = 50.0
-initial_velocity_max = 100.0
+initial_velocity_min = 100.0
+initial_velocity_max = 500.0
 gravity = Vector3(0, 0, 0)
-scale_max = 3.0
+scale_min = 0.25
 color_ramp = SubResource("GradientTexture1D_et0ab")
 hue_variation_min = -2.23517e-08
 hue_variation_max = -2.23517e-08
 
 [node name="OrangeSplash" type="GPUParticles2D"]
+z_index = -1
 emitting = false
 amount = 50
 process_material = SubResource("ParticleProcessMaterial_w4gb0")
+texture = ExtResource("1_2siq4")
+lifetime = 1.5
 one_shot = true
-explosiveness = 1.0
+speed_scale = 4.0
+fixed_fps = 60
 script = ExtResource("1_sn5y5")

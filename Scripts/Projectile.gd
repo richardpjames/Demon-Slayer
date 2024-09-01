@@ -30,15 +30,16 @@ func _physics_process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if(!body.is_in_group("Player")):
-		# Instantiate the splash particles
-		var splash = particles.instantiate()
-		# Put it where the projectile was destroyed
-		splash.global_position = global_position
-		# Add to the root so not attached to this position
-		get_tree().root.add_child(splash)
 		# Damage any enemies
 		if(body.is_in_group("Enemy")):
 			body.take_damage(damage)
+		else:
+			# Instantiate the splash particles
+			var splash = particles.instantiate()
+			# Put it where the projectile was destroyed
+			splash.global_position = global_position
+			# Add to the root so not attached to this position
+			get_tree().root.add_child(splash)
 		# Destroy this object
 		queue_free()
 
