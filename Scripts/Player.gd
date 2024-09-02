@@ -7,6 +7,8 @@ extends CharacterBody2D
 @export var attack_cooldown_time: float
 @export var projectile_scene: PackedScene
 @export var blood_particles: PackedScene
+@export var sprites: Node2D
+@export var animation_player: AnimationPlayer
 
 # Private variables
 var _direction: Vector2 = Vector2.DOWN
@@ -20,6 +22,11 @@ var current_state: State = State.IDLE
 func _process(_delta: float) -> void:
 	# Get the player direction from input
 	_direction = _set_direction()
+	# Flip the sprite depending on direction to the mouse cursor
+	if(_direction.x < 0):
+		sprites.scale = Vector2(-1,1)
+	if(_direction.x > 0):
+		sprites.scale = Vector2(1,1)
 	# Set the player state
 	if(velocity != Vector2.ZERO):
 		current_state = State.RUNNING
@@ -27,6 +34,8 @@ func _process(_delta: float) -> void:
 		current_state = State.IDLE
 	# Deal with attacking
 	_attack()
+	# Animate
+	_animate()
 
 # Called each physics frame
 func _physics_process(_delta: float) -> void:
@@ -71,3 +80,9 @@ func take_damage(damage: int) -> void:
 		particles.global_position = global_position
 		# Add to the root so not attached to this position
 		get_tree().root.add_child(particles)
+
+func _animate() -> void:
+	if(current_state == State.IDLE):
+		animation_player.play("Idle")
+	elif(current_state == State.RUNNING):
+		animation_player.play("Run")

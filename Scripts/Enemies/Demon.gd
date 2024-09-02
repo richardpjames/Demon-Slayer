@@ -13,6 +13,11 @@ var _attack_end_time: float = 0
 
 func _process(_delta: float) -> void:
 	_direction = _determine_direction()
+	# Flip the sprite depending on direction
+	if(_direction.x < 0):
+		sprites.scale = Vector2(-1,1)
+	if(_direction.x > 0):
+		sprites.scale = Vector2(1,1)
 	# Handle any attacking
 	_attack()
 
