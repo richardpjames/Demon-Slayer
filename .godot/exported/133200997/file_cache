@@ -1,0 +1,12 @@
+res://Scenes/Animations/shared_animations.tscn::982f4885809a4660410892106effd20d::1725291351::res://.godot/exported/133200997/export-d5517dbf9f3bdce5f4afd6af67435346-shared_animations.scn
+res://Scenes/Enemies/demon.tscn::faa262f46a51101d05d61a30a2129b80::1725291351::res://.godot/exported/133200997/export-469d116201738fe8b64ca7055b74d2b8-demon.scn
+res://Scenes/FX/blood_particles.tscn::355acfe3a89adeb99146f5d101b04fcf::1725286272::res://.godot/exported/133200997/export-4beb513a8f8c7acf46db5a6c57ff56db-blood_particles.scn
+res://Scenes/FX/projectile_explosion.tscn::3ed73b8bedca5d58e732cd5299f0660c::1725291351::res://.godot/exported/133200997/export-bcca1d73b496baa226548de815cd616d-projectile_explosion.scn
+res://Scenes/Levels/demo_scene.tscn::927788e386318ff9940580fa9be2849e::1725294741::res://.godot/exported/133200997/export-a72cd2ef75879da359aae68169ca9bf4-demo_scene.scn
+res://Scenes/Player/player.tscn::849d8a5687cfefaf413ba3037b9684b2::1725294363::res://.godot/exported/133200997/export-8e63b53a88b650cb9792f8d8b6d332bc-player.scn
+res://Scenes/Projectiles/projectile.tscn::a0c0058ecb9da2d21681c96be686531a::1725286296::res://.godot/exported/133200997/export-20d3f93db46cb8f30f1b43ce51805d14-projectile.scn
+res://Scenes/UI/full_heart.tscn::647653922843e1c617ca34ee777a387a::1725291351::res://.godot/exported/133200997/export-0904067efb17cc1650027daed919ab83-full_heart.scn
+res://Scenes/UI/game_over.tscn::79fb18f355951dea3a566f5ca8650458::1725294363::res://.godot/exported/133200997/export-9a56eac3d754c4b0171b6c55eed616da-game_over.scn
+res://Scenes/UI/hud.tscn::2882a2cae861ac19f0f70ce245caf8de::1725278969::res://.godot/exported/133200997/export-67605cadf80d25390853685a572b8dfc-hud.scn
+res://Scenes/UI/main_menu.tscn::a9e343d4a667e8fb7c16035f33dee429::1725291351::res://.godot/exported/133200997/export-f42f7f3102c37a88392546843bad643d-main_menu.scn
+res://Tiles/tile_set.tres::3bdecf496eafe191fc74717d8e5da5ea::1725293921::res://.godot/exported/133200997/export-d70897400ab525277adb557e29418f69-tile_set.res

@@ -23,7 +23,6 @@ jobs:
       - name: Run Build
         run: |
           mkdir -p build/windows
-          ./Godot_v4.3-stable_linux.x86_64 --editor --quit
           ./Godot_v4.3-stable_linux.x86_64 -v --headless --export-release "Windows" ./build/windows/DemonSlayer.exe
           cd build/windows
           zip -r ../../DemonSlayer-Windows.zip *
