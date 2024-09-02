@@ -26,7 +26,9 @@ layout_mode = 2
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "Game Over!"
+horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 text = "Main Menu"

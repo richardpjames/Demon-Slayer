@@ -6,7 +6,7 @@ var _health: int
 var _score: int = 0
 
 # Scenes which are required - main menu, game over and main level
-const START_GAME = preload("res://Scenes/demo_scene.tscn")
+const START_GAME = preload("res://Scenes/Levels/demo_scene.tscn")
 const MAIN_MENU = preload("res://Scenes/UI/main_menu.tscn")
 const GAME_OVER = preload("res://Scenes/UI/game_over.tscn")
 
