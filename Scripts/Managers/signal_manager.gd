@@ -15,4 +15,4 @@ signal on_game_start
 @warning_ignore("unused_signal")
 signal on_main_menu_requested
 @warning_ignore("unused_signal")
-signal on_player_death
+signal on_game_over

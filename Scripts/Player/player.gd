@@ -15,7 +15,7 @@ var _direction: Vector2 = Vector2.DOWN
 var _attack_end_time: float = 0
 
 # For tracking state
-enum State {IDLE, RUNNING, ATTACKING}
+enum State {IDLE, RUNNING, ATTACKING, DEAD}
 var current_state: State = State.IDLE
 
 # Constants
@@ -23,8 +23,9 @@ const SPECIAL_ATTACK_DIRECTIONS = 16
 
 # Called each frame
 func _process(_delta: float) -> void:
-	# Get the player direction from input
-	_direction = _set_direction()
+	# Get the player direction from input if they are not dead
+	if(current_state != State.DEAD):
+		_direction = _set_direction()
 	# Flip the sprite depending on direction to the mouse cursor
 	if(_direction.x < 0):
 		sprites.scale = Vector2(-1,1)
@@ -33,7 +34,7 @@ func _process(_delta: float) -> void:
 	# Set the player state
 	if(velocity != Vector2.ZERO):
 		current_state = State.RUNNING
-	else:
+	elif(current_state != State.DEAD):
 		current_state = State.IDLE
 	# Deal with attacking
 	_attack()
@@ -58,8 +59,8 @@ func _set_direction() -> Vector2:
 	return direction
 
 func _attack() -> void:
-	# Check that previous attacks are complete
-	if(Time.get_ticks_msec() > _attack_end_time):
+	# Check that previous attacks are complete and player is alive
+	if(Time.get_ticks_msec() > _attack_end_time && current_state != State.DEAD):
 		# Then check for inputs
 		if(Input.is_action_pressed("Fire")):
 			# Increment the cooldown timer by the cooldown in milliseconds
@@ -94,17 +95,21 @@ func take_damage(damage: int) -> void:
 	var new_health: int = GameManager.get_player_health() - damage
 	# Emit the signal that we are hit
 	SignalManager.on_player_hit.emit(damage)
-	# Only emit blood if we are not dead
-	if(new_health > 0):
-		# Instantiate the blood particles
-		var particles = blood_particles.instantiate()
-		# Put it where the projectile was destroyed
-		particles.global_position = global_position
-		# Add to the root so not attached to this position
-		get_tree().root.add_child(particles)
+	# Instantiate the blood particles
+	var particles = blood_particles.instantiate()
+	# Put it where the projectile was destroyed
+	particles.global_position = global_position
+	# Add to the root so not attached to this position
+	get_tree().root.add_child(particles)
+	if(new_health <= 0):
+		current_state = State.DEAD
+		animation_player.play("Death")
 
 func _animate() -> void:
 	if(current_state == State.IDLE):
 		animation_player.play("Idle")
 	elif(current_state == State.RUNNING):
 		animation_player.play("Run")
+
+func signal_game_over() -> void:
+	SignalManager.on_game_over.emit()
