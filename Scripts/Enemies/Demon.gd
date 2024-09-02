@@ -18,8 +18,15 @@ func _process(_delta: float) -> void:
 		sprites.scale = Vector2(-1,1)
 	if(_direction.x > 0):
 		sprites.scale = Vector2(1,1)
+	# Set the demons state
+	if(velocity != Vector2.ZERO):
+		current_state = State.RUNNING
+	else:
+		current_state = State.IDLE
 	# Handle any attacking
 	_attack()
+	# Animate
+	_animate()
 
 func _physics_process(_delta: float) -> void:
 	velocity = _direction * speed
@@ -55,3 +62,9 @@ func _attack() -> void:
 		_player.take_damage(damage)
 		# Reset the cooldown (multiply by 1000 to deal with milliseconds)
 		_attack_end_time = Time.get_ticks_msec() + (attack_cooldown * 1000)
+
+func _animate() -> void:
+	if(current_state == State.IDLE):
+		animation_player.play("Idle")
+	elif(current_state == State.RUNNING):
+		animation_player.play("Run")

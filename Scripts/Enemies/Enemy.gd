@@ -9,6 +9,12 @@ extends CharacterBody2D
 @export var speed: int
 # For displaying blood particles on getting hurt
 @export var blood_particles: PackedScene
+# For playing animations
+@export var animation_player: AnimationPlayer
+
+# For tracking state
+enum State {IDLE, RUNNING, ATTACKING}
+var current_state: State = State.IDLE
 
 # Get a reference to the player as a private variable
 @warning_ignore("unused_private_class_variable")

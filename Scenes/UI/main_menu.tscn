@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dr0fjwbvqtopn"]
+[gd_scene load_steps=3 format=3 uid="uid://dr0fjwbvqtopn"]
 
 [ext_resource type="Script" path="res://Scripts/UI/main_menu.gd" id="1_6alb1"]
+[ext_resource type="Texture2D" uid="uid://bsk4wwhai0wmr" path="res://Assets/UI/Splash.png" id="2_81l4d"]
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("play_button", "quit_button")]
 layout_mode = 3
@@ -13,6 +14,19 @@ script = ExtResource("1_6alb1")
 play_button = NodePath("CenterContainer/VBoxContainer/StartButton")
 quit_button = NodePath("CenterContainer/VBoxContainer/QuitButton")
 
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="PanelContainer"]
+layout_mode = 2
+texture = ExtResource("2_81l4d")
+expand_mode = 1
+
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -23,10 +37,6 @@ grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
-
-[node name="GameName" type="Label" parent="CenterContainer/VBoxContainer"]
-layout_mode = 2
-text = "Demon Slayer"
 
 [node name="StartButton" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
