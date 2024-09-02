@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 SignalManager="*res://Scripts/Managers/signal_manager.gd"
 GameManager="*res://Scripts/Managers/game_manager.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [global_group]
 
 Player=""
