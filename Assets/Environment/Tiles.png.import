@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2xtrrttvjbsu"
-path="res://.godot/imported/Walls and Floors.png-ea80897d8bf08350e261c67d494cedc1.ctex"
+uid="uid://cjoat0hkinbho"
+path="res://.godot/imported/Tiles.png-6a8c0a4f0deb5dfa4087ad38861d86d8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Environment/Walls and Floors.png"
-dest_files=["res://.godot/imported/Walls and Floors.png-ea80897d8bf08350e261c67d494cedc1.ctex"]
+source_file="res://Assets/Environment/Tiles.png"
+dest_files=["res://.godot/imported/Tiles.png-6a8c0a4f0deb5dfa4087ad38861d86d8.ctex"]
 
 [params]
 
