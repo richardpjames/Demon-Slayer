@@ -4,7 +4,7 @@ extends Node
 var _full_screen: bool
 
 # Check for input to switch full screen
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if(Input.is_action_just_pressed("FullScreen")):
 		_full_screen = !_full_screen
 		_enter_exit_full_screen()
