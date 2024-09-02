@@ -215,11 +215,11 @@ script = ExtResource("1_175dc")
 damage = 1
 attack_distance = 200.0
 attack_cooldown = 2.0
-sprites = NodePath("Sprites")
 health = 5
 activation_distance = 1500.0
 speed = 400
 blood_particles = ExtResource("2_g1uco")
+sprites = NodePath("Sprites")
 animation_player = NodePath("Animations")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

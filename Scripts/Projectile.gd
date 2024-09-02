@@ -46,3 +46,6 @@ func _on_body_entered(body: Node2D) -> void:
 func set_direction(new_direction: Vector2) -> void:
 	_direction = new_direction
 	look_at((global_position + _direction))
+
+func set_damage(new_damage: int) -> void:
+	damage = new_damage

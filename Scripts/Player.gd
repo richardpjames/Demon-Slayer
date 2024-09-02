@@ -18,6 +18,9 @@ var _attack_end_time: float = 0
 enum State {IDLE, RUNNING, ATTACKING}
 var current_state: State = State.IDLE
 
+# Constants
+const SPECIAL_ATTACK_DIRECTIONS = 16
+
 # Called each frame
 func _process(_delta: float) -> void:
 	# Get the player direction from input
@@ -55,17 +58,36 @@ func _set_direction() -> Vector2:
 	return direction
 
 func _attack() -> void:
-	# Check for the right input and that previous attacks are complete
-	if(Input.is_action_pressed("Fire") && Time.get_ticks_msec() > _attack_end_time):
-		# Increment the cooldown timer by the cooldown in milliseconds
-		_attack_end_time = Time.get_ticks_msec() + (attack_cooldown_time * 1000)
-		# Instantiate the projectile
-		var projectile = projectile_scene.instantiate()
-		# Set the start position to the player
-		projectile.global_position = global_position
-		projectile.set_direction(global_position.direction_to(get_global_mouse_position()).normalized())
-		# Attach the projectile to the tree
-		get_tree().root.add_child(projectile)
+	# Check that previous attacks are complete
+	if(Time.get_ticks_msec() > _attack_end_time):
+		# Then check for inputs
+		if(Input.is_action_pressed("Fire")):
+			# Increment the cooldown timer by the cooldown in milliseconds
+			_attack_end_time = Time.get_ticks_msec() + (attack_cooldown_time * 1000)
+			# Instantiate the projectile
+			var projectile = projectile_scene.instantiate()
+			# Set the start position to the player
+			projectile.global_position = global_position
+			projectile.set_direction(global_position.direction_to(get_global_mouse_position()).normalized())
+			# Attach the projectile to the tree
+			get_tree().root.add_child(projectile)
+		elif(Input.is_action_pressed("SpecialAttack") && GameManager.get_score() > 0):
+			# Increment the cooldown timer by the cooldown in milliseconds
+			_attack_end_time = Time.get_ticks_msec() + (attack_cooldown_time * 1000)
+			# Create projectiles in the specified number of directions
+			for i in SPECIAL_ATTACK_DIRECTIONS:
+				# Instantiate projectiles
+				var projectile = projectile_scene.instantiate()
+				# Start at the player
+				projectile.global_position = global_position
+				# Base the direction on rotating around a circle
+				projectile.set_direction(Vector2.ONE.rotated((2 * PI / SPECIAL_ATTACK_DIRECTIONS) * i).normalized())
+				# Get additional damage
+				projectile.set_damage(3)
+				get_tree().root.add_child(projectile)
+			# Reduce the score to do this
+			SignalManager.on_special_attack_complete.emit()
+			
 		
 # This method provides basics before being overridden by extending classes
 func take_damage(damage: int) -> void:

@@ -3,6 +3,8 @@ extends Node
 # Private variables
 var _max_health: int = 10
 var _health: int
+var _score: int = 0
+
 # Scenes which are required - main menu, game over and main level
 const START_GAME = preload("res://Scenes/demo_scene.tscn")
 const MAIN_MENU = preload("res://Scenes/UI/main_menu.tscn")
@@ -14,11 +16,15 @@ func _ready() -> void:
 	SignalManager.on_player_death.connect(_game_over)
 	SignalManager.on_game_start.connect(_start_game)
 	SignalManager.on_main_menu_requested.connect(_main_menu)
+	SignalManager.on_enemy_killed.connect(_increase_score)
+	SignalManager.on_special_attack_complete.connect(_decrease_score)
 
 # Reset stats to put health back to max
 func _reset_game() -> void:
 	_health = _max_health
+	_score = 0
 	SignalManager.on_player_health_updated.emit(_health)
+	SignalManager.on_score_updated.emit(_score)
 	
 # Start the game by resetting statistics and loading the game scene
 func _start_game() -> void:
@@ -46,3 +52,21 @@ func _take_damage(damage: int) -> void:
 # Allow direct access to health if needed
 func get_player_health() -> int:
 	return _health
+
+# Detect the escape key and return to main menu
+func _process(_delta: float) -> void:
+	if(Input.is_action_just_pressed("MainMenu")):
+		_main_menu()
+		
+func get_score() -> int:
+	return _score
+		
+# Increase the score and emit a signal to confirm
+func _increase_score() -> void:
+	_score = _score + 1
+	SignalManager.on_score_updated.emit(_score)
+	
+# Decrease the score and emit a signal to confirm
+func _decrease_score() -> void:
+	_score = _score - 1
+	SignalManager.on_score_updated.emit(_score)
