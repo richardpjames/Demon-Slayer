@@ -33,4 +33,5 @@ lifetime = 1.5
 one_shot = true
 speed_scale = 4.0
 fixed_fps = 60
+visibility_rect = Rect2(-2500, -2500, 5000, 5000)
 script = ExtResource("1_sn5y5")
