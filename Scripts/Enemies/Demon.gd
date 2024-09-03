@@ -19,7 +19,9 @@ func _process(_delta: float) -> void:
 	if(_direction.x > 0):
 		sprites.scale = Vector2(1,1)
 	# Set the demons state
-	if(velocity != Vector2.ZERO):
+	if(current_state == State.ATTACKING):
+		pass
+	elif(velocity != Vector2.ZERO):
 		current_state = State.RUNNING
 	else:
 		current_state = State.IDLE
@@ -53,6 +55,10 @@ func _determine_direction() -> Vector2:
 func _attack() -> void:
 	# If the player is close enough and we have finished the cooldown
 	if(global_position.distance_to(_player.global_position) < attack_distance && Time.get_ticks_msec() > _attack_end_time):
+		# Play the attack animation
+		animation_player.play("Attack")
+		# Set the current state (reset by animation)
+		current_state = State.ATTACKING
 		# Tween animation of the sprite hitting the player
 		var tween = get_tree().create_tween()
 		# Tween the sprite to the position of the player and then back again
@@ -68,3 +74,6 @@ func _animate() -> void:
 		animation_player.play("Idle")
 	elif(current_state == State.RUNNING):
 		animation_player.play("Run")
+
+func end_attack() -> void:
+	current_state = State.IDLE
