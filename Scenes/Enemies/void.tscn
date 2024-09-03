@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://c2n56kgy5jvyd"]
+[gd_scene load_steps=13 format=3 uid="uid://bidlbshk7kk32"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/demon.gd" id="1_175dc"]
-[ext_resource type="Texture2D" uid="uid://dxvva3i17hcrx" path="res://Assets/Characters/Demon.png" id="2_1tfn2"]
-[ext_resource type="PackedScene" uid="uid://b6iud7ni2webl" path="res://Scenes/FX/blood_particles.tscn" id="2_g1uco"]
-[ext_resource type="PackedScene" uid="uid://dwaf2kq05klj" path="res://Scenes/Drops/health_drop.tscn" id="3_g07wc"]
+[ext_resource type="Script" path="res://Scripts/Enemies/void.gd" id="1_iyxuy"]
+[ext_resource type="PackedScene" uid="uid://bgvgwfm18c117" path="res://Scenes/Projectiles/void_projectile.tscn" id="2_dmtb4"]
+[ext_resource type="PackedScene" uid="uid://ca6nqouwoc00r" path="res://Scenes/FX/void_particles.tscn" id="2_tr2o4"]
+[ext_resource type="Texture2D" uid="uid://6j1sicjn6xij" path="res://Assets/Characters/Void.png" id="3_u4nh4"]
+[ext_resource type="PackedScene" uid="uid://dwaf2kq05klj" path="res://Scenes/Drops/health_drop.tscn" id="4_r0xh0"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3nwt7"]
 radius = 97.0
@@ -448,20 +449,21 @@ _data = {
 "Run": SubResource("Animation_jko4l")
 }
 
-[node name="Demon" type="CharacterBody2D" node_paths=PackedStringArray("sprites", "animation_player") groups=["Enemy"]]
+[node name="Void" type="CharacterBody2D" node_paths=PackedStringArray("sprites", "animation_player") groups=["Enemy"]]
 collision_mask = 3
 motion_mode = 1
-script = ExtResource("1_175dc")
+script = ExtResource("1_iyxuy")
 damage = 1
-attack_distance = 300.0
-attack_cooldown = 2.0
+attack_distance = 2000.0
+attack_cooldown = 1.0
 sprites = NodePath("Sprites")
+projectile_scene = ExtResource("2_dmtb4")
 health = 5
-activation_distance = 1500.0
+activation_distance = 2000.0
 speed = 400
-blood_particles = ExtResource("2_g1uco")
+blood_particles = ExtResource("2_tr2o4")
 animation_player = NodePath("Animations")
-health_drop = ExtResource("3_g07wc")
+health_drop = ExtResource("4_r0xh0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 physics_interpolation_mode = 1
@@ -472,7 +474,7 @@ shape = SubResource("CapsuleShape2D_3nwt7")
 
 [node name="Torso" type="Sprite2D" parent="Sprites"]
 position = Vector2(0, 36)
-texture = ExtResource("2_1tfn2")
+texture = ExtResource("3_u4nh4")
 offset = Vector2(0, -36)
 region_enabled = true
 region_rect = Rect2(100, 252.592, 111.484, 96.7391)
@@ -480,21 +482,21 @@ region_rect = Rect2(100, 252.592, 111.484, 96.7391)
 [node name="Head" type="Sprite2D" parent="Sprites/Torso"]
 position = Vector2(0, -67)
 rotation = -0.0310716
-texture = ExtResource("2_1tfn2")
+texture = ExtResource("3_u4nh4")
 offset = Vector2(-7, -103)
 region_enabled = true
-region_rect = Rect2(48.5989, 49.464, 197.818, 204.536)
+region_rect = Rect2(48.5989, 24.3925, 197.818, 229.607)
 
 [node name="Eyes" type="Sprite2D" parent="Sprites/Torso/Head"]
 position = Vector2(30.3786, -76.093)
-texture = ExtResource("2_1tfn2")
+texture = ExtResource("3_u4nh4")
 region_enabled = true
 region_rect = Rect2(248, 57, 92, 66)
 
 [node name="Left Arm" type="Sprite2D" parent="Sprites/Torso"]
 position = Vector2(-30, -67)
 rotation = 0.136503
-texture = ExtResource("2_1tfn2")
+texture = ExtResource("3_u4nh4")
 offset = Vector2(-3, 17)
 region_enabled = true
 region_rect = Rect2(248.442, 127.191, 47.4074, 53.9238)
@@ -502,14 +504,14 @@ region_rect = Rect2(248.442, 127.191, 47.4074, 53.9238)
 [node name="Left Hand" type="Sprite2D" parent="Sprites/Torso/Left Arm"]
 show_behind_parent = true
 position = Vector2(-6, 48)
-texture = ExtResource("2_1tfn2")
+texture = ExtResource("3_u4nh4")
 region_enabled = true
 region_rect = Rect2(243.011, 182.165, 55.1341, 49.5081)
 
 [node name="Right Arm" type="Sprite2D" parent="Sprites/Torso"]
 z_index = -1
 position = Vector2(25, -62)
-texture = ExtResource("2_1tfn2")
+texture = ExtResource("3_u4nh4")
 offset = Vector2(7, 16)
 region_enabled = true
 region_rect = Rect2(298.024, 126.696, 49.454, 58.5033)
@@ -517,7 +519,7 @@ region_rect = Rect2(298.024, 126.696, 49.454, 58.5033)
 [node name="Right Hand" type="Sprite2D" parent="Sprites/Torso/Right Arm"]
 show_behind_parent = true
 position = Vector2(15, 43)
-texture = ExtResource("2_1tfn2")
+texture = ExtResource("3_u4nh4")
 region_enabled = true
 region_rect = Rect2(298.982, 186.465, 49.099, 50.1219)
 
@@ -528,7 +530,7 @@ occluder = SubResource("OccluderPolygon2D_nen7g")
 [node name="Left Leg" type="Sprite2D" parent="Sprites"]
 show_behind_parent = true
 position = Vector2(-26, 30)
-texture = ExtResource("2_1tfn2")
+texture = ExtResource("3_u4nh4")
 offset = Vector2(1, 14)
 region_enabled = true
 region_rect = Rect2(247.053, 237.847, 47.0532, 50.1219)
@@ -536,7 +538,7 @@ region_rect = Rect2(247.053, 237.847, 47.0532, 50.1219)
 [node name="Right Leg" type="Sprite2D" parent="Sprites"]
 show_behind_parent = true
 position = Vector2(27, 31)
-texture = ExtResource("2_1tfn2")
+texture = ExtResource("3_u4nh4")
 offset = Vector2(1, 15)
 region_enabled = true
 region_rect = Rect2(297.175, 237.847, 52.1677, 51.1448)

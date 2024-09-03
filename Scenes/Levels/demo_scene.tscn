@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=4 uid="uid://c8r6h878ajo4x"]
+[gd_scene load_steps=7 format=4 uid="uid://c8r6h878ajo4x"]
 
 [ext_resource type="TileSet" uid="uid://d7ujd1ovnkh6" path="res://Tiles/tile_set.tres" id="1_ekehn"]
 [ext_resource type="PackedScene" uid="uid://bga08ako617jr" path="res://Scenes/Player/player.tscn" id="2_8qewq"]
+[ext_resource type="PackedScene" uid="uid://bidlbshk7kk32" path="res://Scenes/Enemies/void.tscn" id="2_l0grw"]
 [ext_resource type="PackedScene" uid="uid://c2n56kgy5jvyd" path="res://Scenes/Enemies/demon.tscn" id="3_soaag"]
 [ext_resource type="PackedScene" uid="uid://d3vdfbbuf72m8" path="res://Scenes/UI/hud.tscn" id="4_c0ne4"]
 
@@ -209,6 +210,72 @@ position = Vector2(3121, -13841)
 
 [node name="Demon59" parent="Enemies" instance=ExtResource("3_soaag")]
 position = Vector2(1605, -14788)
+
+[node name="Void" parent="Enemies" instance=ExtResource("2_l0grw")]
+position = Vector2(4557, 613)
+
+[node name="Void2" parent="Enemies" instance=ExtResource("2_l0grw")]
+position = Vector2(3725, -1009)
+
+[node name="Void3" parent="Enemies" instance=ExtResource("2_l0grw")]
+position = Vector2(967, -3204)
+
+[node name="Void4" parent="Enemies" instance=ExtResource("2_l0grw")]
+position = Vector2(-116, -4131)
+
+[node name="Void5" parent="Enemies" instance=ExtResource("2_l0grw")]
+position = Vector2(732, -4957)
+
+[node name="Void6" parent="Enemies" instance=ExtResource("2_l0grw")]
+position = Vector2(1815, -7758)
+
+[node name="Void7" parent="Enemies" instance=ExtResource("2_l0grw")]
+position = Vector2(4880, -7830)
+
+[node name="Void8" parent="Enemies" instance=ExtResource("2_l0grw")]
+position = Vector2(6049, -4095)
+
+[node name="Void9" parent="Enemies" instance=ExtResource("2_l0grw")]
+position = Vector2(6826, -4765)
+
+[node name="Void10" parent="Enemies" instance=ExtResource("2_l0grw")]
+position = Vector2(6726, -282)
+
+[node name="Void11" parent="Enemies" instance=ExtResource("2_l0grw")]
+position = Vector2(6412, 2120)
+
+[node name="Void12" parent="Enemies" instance=ExtResource("2_l0grw")]
+position = Vector2(9099, -1244)
+
+[node name="Void13" parent="Enemies" instance=ExtResource("2_l0grw")]
+position = Vector2(8900, -4836)
+
+[node name="Void14" parent="Enemies" instance=ExtResource("2_l0grw")]
+position = Vector2(9755, -3568)
+
+[node name="Void15" parent="Enemies" instance=ExtResource("2_l0grw")]
+position = Vector2(8864, -7309)
+
+[node name="Void16" parent="Enemies" instance=ExtResource("2_l0grw")]
+position = Vector2(3291, -10182)
+
+[node name="Void17" parent="Enemies" instance=ExtResource("2_l0grw")]
+position = Vector2(1830, -10174)
+
+[node name="Void18" parent="Enemies" instance=ExtResource("2_l0grw")]
+position = Vector2(-893, -13139)
+
+[node name="Void19" parent="Enemies" instance=ExtResource("2_l0grw")]
+position = Vector2(3055, -12348)
+
+[node name="Void20" parent="Enemies" instance=ExtResource("2_l0grw")]
+position = Vector2(4331, -13745)
+
+[node name="Void21" parent="Enemies" instance=ExtResource("2_l0grw")]
+position = Vector2(3013, -14871)
+
+[node name="Void22" parent="Enemies" instance=ExtResource("2_l0grw")]
+position = Vector2(1794, -14002)
 
 [node name="HUD" parent="." instance=ExtResource("4_c0ne4")]
 

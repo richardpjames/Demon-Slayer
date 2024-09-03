@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://dwaf2kq05klj"]
+
+[ext_resource type="Script" path="res://Scripts/Drops/health_drop.gd" id="1_8fthv"]
+[ext_resource type="Texture2D" uid="uid://bptje32sn60pg" path="res://Assets/Particles/Health Particle.png" id="2_mom7c"]
+[ext_resource type="Texture2D" uid="uid://4mjcn2fcckk4" path="res://Assets/Drops/Health Drop.png" id="3_gtmi4"]
+
+[sub_resource type="Gradient" id="Gradient_ev8x2"]
+colors = PackedColorArray(1, 0, 0, 0.470588, 1, 0, 0, 0.470588)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_13x0n"]
+gradient = SubResource("Gradient_ev8x2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6xc45"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 75.0
+angle_min = -180.0
+angle_max = 180.0
+direction = Vector3(1, -2, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 5.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 50.0
+linear_accel_max = 50.0
+scale_min = 0.25
+scale_max = 0.3
+color_ramp = SubResource("GradientTexture1D_13x0n")
+turbulence_influence_max = 0.5
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_26bnw"]
+radius = 56.4358
+
+[node name="HealthDrop" type="Area2D"]
+script = ExtResource("1_8fthv")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 15
+process_material = SubResource("ParticleProcessMaterial_6xc45")
+texture = ExtResource("2_mom7c")
+lifetime = 2.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_gtmi4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_26bnw")

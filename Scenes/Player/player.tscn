@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://by4u6bgeb7eb" path="res://Assets/Environment/Light Shape.png" id="6_q3dta"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t3qxr"]
-radius = 71.0
+radius = 90.0
 height = 302.0
 
 [sub_resource type="Animation" id="Animation_iqn7j"]
@@ -546,7 +546,6 @@ _data = {
 collision_layer = 3
 motion_mode = 1
 script = ExtResource("1_jo20q")
-health = 10
 speed = 1250
 attack_cooldown_time = 0.25
 projectile_scene = ExtResource("2_htgr2")
@@ -558,13 +557,12 @@ animation_player = NodePath("Animations")
 zoom = Vector2(0.3, 0.3)
 position_smoothing_enabled = true
 script = ExtResource("2_mnyix")
-shake_intensity = 40
-shake_duration = 0.5
+shake_intensity = 250
+shake_duration = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 z_index = 1
-position = Vector2(3, -84)
+position = Vector2(-10, -84)
 shape = SubResource("CapsuleShape2D_t3qxr")
 
 [node name="Sprites" type="Node2D" parent="."]

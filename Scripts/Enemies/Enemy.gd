@@ -11,6 +11,8 @@ extends CharacterBody2D
 @export var blood_particles: PackedScene
 # For playing animations
 @export var animation_player: AnimationPlayer
+# For dropping health packs
+@export var health_drop: PackedScene
 
 # For tracking state
 enum State {IDLE, RUNNING, ATTACKING}
@@ -32,5 +34,17 @@ func take_damage(damage: int) -> void:
 	get_tree().root.add_child(particles)
 	# Determine whether to die
 	if(health <= 0):
+		_drop_item()
 		queue_free()
 		SignalManager.on_enemy_killed.emit()
+
+func _drop_item() -> void:
+	var rng = RandomNumberGenerator.new()
+	# 1 in 4 chance of dropping health
+	if(rng.randi_range(1,4) == 1):
+		# Instantiate health drop
+		var drop = health_drop.instantiate()
+		# Place where the enemy died
+		drop.global_position = global_position
+		# Add to the scene tree
+		get_tree().root.call_deferred("add_child",drop)

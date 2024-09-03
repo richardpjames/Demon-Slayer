@@ -7,6 +7,9 @@ extends Area2D
 @export var particles: PackedScene
 @export var damage: int
 
+@export var group_to_damage: String
+@export var group_to_ignore: String
+
 # Direction of travel
 var _direction: Vector2 = Vector2.ZERO
 
@@ -29,9 +32,9 @@ func _physics_process(delta: float) -> void:
 	global_position += _direction * speed * delta
 
 func _on_body_entered(body: Node2D) -> void:
-	if(!body.is_in_group("Player")):
+	if(!body.is_in_group(group_to_ignore)):
 		# Damage any enemies
-		if(body.is_in_group("Enemy")):
+		if(body.is_in_group(group_to_damage)):
 			body.take_damage(damage)
 		else:
 			# Instantiate the splash particles

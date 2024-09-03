@@ -13,10 +13,14 @@ speed = 2500
 lifetime = 3.0
 particles = ExtResource("2_wri8y")
 damage = 1
+group_to_damage = "Enemy"
+group_to_ignore = "Player"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.87451, 0.443137, 0.14902, 1)
 rotation = 1.5708
 texture = ExtResource("2_5w5mr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_7li6b")

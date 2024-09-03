@@ -1,4 +1,4 @@
-class_name Demon
+class_name Void
 extends Enemy
 
 # Configuration
@@ -6,6 +6,7 @@ extends Enemy
 @export var attack_distance: float
 @export var attack_cooldown: float
 @export var sprites: Node2D
+@export var projectile_scene: PackedScene
 
 # Private variables
 var _direction: Vector2 = Vector2.ZERO
@@ -56,19 +57,23 @@ func _determine_direction() -> Vector2:
 func _attack() -> void:
 	# If the player is close enough and we have finished the cooldown
 	if(global_position.distance_to(_player.global_position) < attack_distance && Time.get_ticks_msec() > _attack_end_time):
-		# Play the attack animation
-		animation_player.play("Attack")
-		# Set the current state (reset by animation)
-		current_state = State.ATTACKING
-		# Tween animation of the sprite hitting the player
-		var tween = get_tree().create_tween()
-		# Tween the sprite to the position of the player and then back again
-		tween.tween_property(sprites, "global_position",_player.global_position, 0.15).set_trans(Tween.TRANS_QUAD)
-		tween.tween_property(sprites, "global_position", global_position, 0.15).set_trans(Tween.TRANS_QUAD)
-		# Attack the player (take damage)
-		_player.take_damage(damage)
-		# Reset the cooldown (multiply by 1000 to deal with milliseconds)
-		_attack_end_time = Time.get_ticks_msec() + (attack_cooldown * 1000)
+		# Check if there is clear line of sight to the player
+		var space_state: PhysicsDirectSpaceState2D = get_world_2d().direct_space_state
+		# Perform a ray trace masked to "2"
+		var query: PhysicsRayQueryParameters2D = PhysicsRayQueryParameters2D.create(global_position, _player.global_position, 2)
+		var result: Dictionary = space_state.intersect_ray(query)
+		# If we hit something - check if it is the player and return the direction
+		if(result):
+			if(result["collider"].is_in_group("Player")):
+				# Instantiate the projectile
+				var projectile = projectile_scene.instantiate()
+				# Set the start position to the player
+				projectile.global_position = global_position
+				projectile.set_direction(global_position.direction_to(_player.global_position).normalized())
+				# Attach the projectile to the tree
+				get_tree().root.add_child(projectile)
+				# Reset the cooldown (multiply by 1000 to deal with milliseconds)
+				_attack_end_time = Time.get_ticks_msec() + (attack_cooldown * 1000)
 
 func _animate() -> void:
 	if(current_state == State.IDLE):

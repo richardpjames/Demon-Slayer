@@ -4,6 +4,7 @@ extends CanvasLayer
 # Configuration
 @export var hearts_container: HBoxContainer
 @export var full_heart_scene: PackedScene
+@export var empty_heart_scene: PackedScene
 @export var score_label: Label
 
 # Connect signals
@@ -21,6 +22,9 @@ func _update_hearts(health: int) -> void:
 	# Now add the correct number of hearts
 	for i in range(health):
 		var heart = full_heart_scene.instantiate()
+		hearts_container.add_child(heart)
+	for i in range(health, GameManager._max_health):
+		var heart = empty_heart_scene.instantiate()
 		hearts_container.add_child(heart)
 
 func _update_score(score: int) -> void:

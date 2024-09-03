@@ -21,26 +21,30 @@ var current_state: State = State.IDLE
 # Constants
 const SPECIAL_ATTACK_DIRECTIONS = 16
 
+func _ready() -> void:
+	SignalManager.on_player_death.connect(_die)
+
 # Called each frame
 func _process(_delta: float) -> void:
 	# Get the player direction from input if they are not dead
 	if(current_state != State.DEAD):
 		_direction = _set_direction()
-	# Flip the sprite depending on direction to the mouse cursor
-	if(_direction.x < 0):
-		sprites.scale = Vector2(-1,1)
-	if(_direction.x > 0):
-		sprites.scale = Vector2(1,1)
-	# Set the player state
-	if(velocity != Vector2.ZERO):
-		current_state = State.RUNNING
-	elif(current_state != State.DEAD):
-		current_state = State.IDLE
-	# Deal with attacking
-	_attack()
-	# Animate
-	_animate()
-
+		# Flip the sprite depending on direction to the mouse cursor
+		if(_direction.x < 0):
+			sprites.scale = Vector2(-1,1)
+		if(_direction.x > 0):
+			sprites.scale = Vector2(1,1)
+		# Set the player state
+		if(velocity != Vector2.ZERO):
+			current_state = State.RUNNING
+		elif(current_state != State.DEAD):
+			current_state = State.IDLE
+		# Deal with attacking
+		_attack()
+		# Animate
+		_animate()
+	else:
+		_direction = Vector2.ZERO
 # Called each physics frame
 func _physics_process(_delta: float) -> void:
 	# Velocity is built into the character controller
@@ -92,7 +96,6 @@ func _attack() -> void:
 		
 # This method provides basics before being overridden by extending classes
 func take_damage(damage: int) -> void:
-	var new_health: int = GameManager.get_player_health() - damage
 	# Emit the signal that we are hit
 	SignalManager.on_player_hit.emit(damage)
 	# Instantiate the blood particles
@@ -101,9 +104,10 @@ func take_damage(damage: int) -> void:
 	particles.global_position = global_position
 	# Add to the root so not attached to this position
 	get_tree().root.add_child(particles)
-	if(new_health <= 0):
-		current_state = State.DEAD
-		animation_player.play("Death")
+
+func _die() -> void:
+	current_state = State.DEAD
+	animation_player.play("Death")
 
 func _animate() -> void:
 	if(current_state == State.IDLE):

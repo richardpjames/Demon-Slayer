@@ -13,6 +13,7 @@ const GAME_OVER = preload("res://Scenes/UI/game_over.tscn")
 # Connect to signals to deal with events in the game
 func _ready() -> void:
 	SignalManager.on_player_hit.connect(_take_damage)
+	SignalManager.on_player_healed.connect(_heal)
 	SignalManager.on_game_over.connect(_game_over)
 	SignalManager.on_game_start.connect(_start_game)
 	SignalManager.on_main_menu_requested.connect(_main_menu)
@@ -43,11 +44,20 @@ func _main_menu() -> void:
 	get_tree().call_deferred("change_scene_to_packed", MAIN_MENU)
 
 func _take_damage(damage: int) -> void:
+	# Reduce health by damage
 	_health = _health - damage
+	print(_health)
 	# Let the UI etc. know that the health has changed
 	SignalManager.on_player_health_updated.emit(_health)
-	#if(_health <= 0):
-	#	SignalManager.on_player_death.emit()
+	if(_health <= 0):
+		SignalManager.on_player_death.emit()
+
+func _heal() -> void:
+	if(_health < _max_health):
+		_health = _health + 1
+		print(_health)
+	# Let the UI etc. know that the health has changed
+	SignalManager.on_player_health_updated.emit(_health)
 
 # Allow direct access to health if needed
 func get_player_health() -> int:

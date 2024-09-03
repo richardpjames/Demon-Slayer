@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgvgwfm18c117"]
+
+[ext_resource type="Script" path="res://Scripts/Projectiles/projectile.gd" id="1_5wj60"]
+[ext_resource type="PackedScene" uid="uid://ca6nqouwoc00r" path="res://Scenes/FX/void_particles.tscn" id="2_2muh5"]
+[ext_resource type="Texture2D" uid="uid://b8n7yay4x0sgk" path="res://Assets/Projectiles/Projectile.png" id="3_myri2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7li6b"]
+radius = 47.676
+
+[node name="VoidProjectile" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_5wj60")
+speed = 2500
+lifetime = 3.0
+particles = ExtResource("2_2muh5")
+damage = 1
+group_to_damage = "Player"
+group_to_ignore = "Enemy"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+rotation = 1.5708
+texture = ExtResource("3_myri2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_7li6b")
