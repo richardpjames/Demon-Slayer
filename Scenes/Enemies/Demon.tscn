@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c2n56kgy5jvyd"]
+[gd_scene load_steps=10 format=3 uid="uid://c2n56kgy5jvyd"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/demon.gd" id="1_175dc"]
 [ext_resource type="Texture2D" uid="uid://dxvva3i17hcrx" path="res://Assets/Characters/Demon.png" id="2_1tfn2"]
@@ -7,6 +7,9 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3nwt7"]
 radius = 68.0
 height = 290.0
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_nen7g"]
+polygon = PackedVector2Array(-79, -146, -58, -196, -16, -220, 42, -210, 61, -166, 58, -90, 24, -61, 20, -17, 25, 16, -32, 21, -18, -26, -23, -86, -67, -94)
 
 [sub_resource type="Animation" id="Animation_d76yt"]
 resource_name = "Idle"
@@ -295,6 +298,10 @@ texture = ExtResource("2_1tfn2")
 offset = Vector2(1, 15)
 region_enabled = true
 region_rect = Rect2(297.175, 237.847, 52.1677, 51.1448)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Sprites"]
+position = Vector2(1, 8)
+occluder = SubResource("OccluderPolygon2D_nen7g")
 
 [node name="Animations" type="AnimationPlayer" parent="."]
 libraries = {

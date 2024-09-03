@@ -1,16 +1,37 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://d7ujd1ovnkh6"]
+[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://d7ujd1ovnkh6"]
 
 [ext_resource type="Texture2D" uid="uid://cjoat0hkinbho" path="res://Assets/Environment/Tiles.png" id="1_a8vcu"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_m2ubc"]
+polygon = PackedVector2Array(-150, -150, 150, -150, 150, -50, -150, -50)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_g4c2r"]
+polygon = PackedVector2Array(-150, -150, 150, -150, 150, -50, -150, -50)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_rphvs"]
+polygon = PackedVector2Array(-150, -150, 150, -150, 150, -50, -150, -50)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_od4y1"]
+polygon = PackedVector2Array(-150, -150, -50, -150, -50, 150, -150, 150)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_gfewf"]
+polygon = PackedVector2Array(50, -150, 150, -150, 150, 150, 50, 150)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_6bx4r"]
+polygon = PackedVector2Array(-150, -150, 150, -150, 150, 150, -150, 150)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4n8wn"]
 texture = ExtResource("1_a8vcu")
 texture_region_size = Vector2i(300, 300)
 0:0/0 = 0
 1:0/0 = 0
+1:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_m2ubc")
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-150, -150, 150, -150, 150, 150, -150, 150)
 2:0/0 = 0
+2:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_g4c2r")
 2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-150, -150, 150, -150, 150, 150, -150, 150)
 3:0/0 = 0
+3:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_rphvs")
 3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-150, -150, 150, -150, 150, 150, -150, 150)
 0:1/0 = 0
 1:1/0 = 0
@@ -18,13 +39,17 @@ texture_region_size = Vector2i(300, 300)
 3:1/0 = 0
 4:1/0 = 0
 5:1/0 = 0
+5:1/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_6bx4r")
 5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-150, -150, 150, -150, 150, 150, -150, 150)
 4:0/0 = 0
+4:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_od4y1")
 4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-150, -150, -50, -150, -50, 150, -150, 150)
 5:0/0 = 0
+5:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_gfewf")
 5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(50, -150, 150, -150, 150, 150, 50, 150)
 
 [resource]
 tile_size = Vector2i(300, 300)
+occlusion_layer_0/light_mask = 1
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_4n8wn")
