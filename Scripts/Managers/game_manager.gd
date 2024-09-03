@@ -46,7 +46,6 @@ func _main_menu() -> void:
 func _take_damage(damage: int) -> void:
 	# Reduce health by damage
 	_health = _health - damage
-	print(_health)
 	# Let the UI etc. know that the health has changed
 	SignalManager.on_player_health_updated.emit(_health)
 	if(_health <= 0):
@@ -55,7 +54,6 @@ func _take_damage(damage: int) -> void:
 func _heal() -> void:
 	if(_health < _max_health):
 		_health = _health + 1
-		print(_health)
 	# Let the UI etc. know that the health has changed
 	SignalManager.on_player_health_updated.emit(_health)
 
