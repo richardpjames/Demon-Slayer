@@ -10,7 +10,7 @@ radius = 47.676
 [node name="VoidProjectile" type="Area2D"]
 collision_mask = 2
 script = ExtResource("1_5wj60")
-speed = 2500
+speed = 1000
 lifetime = 3.0
 particles = ExtResource("2_2muh5")
 damage = 1

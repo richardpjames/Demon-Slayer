@@ -115,5 +115,8 @@ func _animate() -> void:
 	elif(current_state == State.RUNNING):
 		animation_player.play("Run")
 
+func idle() -> void:
+	current_state = State.IDLE
+
 func signal_game_over() -> void:
 	SignalManager.on_game_over.emit()
