@@ -12,6 +12,7 @@ projectile_scene = ExtResource("2_7duvt")
 fire_point = NodePath("FirePoint")
 cooldown_time = 5.0
 damage = 1
+max_charges = 10
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708

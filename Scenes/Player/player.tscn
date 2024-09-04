@@ -575,7 +575,7 @@ blood_particles = ExtResource("3_0o2yn")
 sprites = NodePath("Sprites")
 animation_player = NodePath("Animations")
 weapon = NodePath("Sprites/Torso/Left Arm/Left Hand/Weapon")
-dash_speed = 6000.0
+dash_speed = 4500.0
 dash_time = 0.15
 
 [node name="GameCamera" type="Camera2D" parent="."]

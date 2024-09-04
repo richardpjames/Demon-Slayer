@@ -27,10 +27,8 @@ var current_state: State = State.IDLE
 
 # Private variables
 var _activated: bool = false
-var _direction: Vector2 = Vector2.ZERO
 
 # Get a reference to the player as a private variable
-@warning_ignore("unused_private_class_variable")
 @onready var _player: Player = get_tree().get_first_node_in_group("Player")
 
 func _ready() -> void:
@@ -45,9 +43,9 @@ func _process(_delta: float) -> void:
 	if(_activated && _player.current_state != _player.State.DEAD):
 		_set_movement_target(_player.global_position)
 		# Flip the sprite depending on direction
-		if(_direction.x < 0):
+		if(velocity.x < 0):
 			sprites.scale = Vector2(-1,1)
-		if(_direction.x > 0):
+		if(velocity.x > 0):
 			sprites.scale = Vector2(1,1)
 		# Set the enemy state
 		if(velocity != Vector2.ZERO):

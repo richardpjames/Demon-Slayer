@@ -6,4 +6,3 @@ target_desired_distance = 600.0
 path_max_distance = 600.0
 avoidance_enabled = true
 max_speed = 1000.0
-debug_enabled = true

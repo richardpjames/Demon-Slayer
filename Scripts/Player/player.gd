@@ -21,6 +21,7 @@ var current_state: State = State.IDLE
 
 func _ready() -> void:
 	SignalManager.on_player_death.connect(_die)
+	weapon.make_player_weapon()
 
 # Called each frame
 func _process(_delta: float) -> void:
@@ -118,3 +119,6 @@ func _dash() -> void:
 		current_state = State.DASHING
 		# Wait for the tween to complete and then set to idle
 		get_tree().create_timer(dash_time).timeout.connect(idle)
+
+func get_weapon_charges() -> void:
+	weapon.signal_charges()

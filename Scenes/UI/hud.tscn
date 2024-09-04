@@ -1,19 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://d3vdfbbuf72m8"]
+[gd_scene load_steps=8 format=3 uid="uid://d3vdfbbuf72m8"]
 
 [ext_resource type="Script" path="res://scripts/ui/hud.gd" id="1_6qppc"]
 [ext_resource type="PackedScene" uid="uid://nsii40d8e4h0" path="res://scenes/ui/full_heart.tscn" id="2_g3dfi"]
 [ext_resource type="PackedScene" uid="uid://duq6qilnena6i" path="res://scenes/ui/empty_heart.tscn" id="3_b2084"]
 [ext_resource type="Texture2D" uid="uid://dulu5vcbvqkb6" path="res://assets/ui/points.png" id="3_f48rb"]
+[ext_resource type="PackedScene" uid="uid://bsffgr1gx11y0" path="res://scenes/ui/full_charge.tscn" id="4_nblks"]
+[ext_resource type="PackedScene" uid="uid://s322x03x00fd" path="res://scenes/ui/empty_charge.tscn" id="5_7a44y"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0mk3h"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
-[node name="HUD" type="CanvasLayer" node_paths=PackedStringArray("hearts_container", "score_label")]
+[node name="HUD" type="CanvasLayer" node_paths=PackedStringArray("hearts_container", "charges_container", "score_label")]
 script = ExtResource("1_6qppc")
-hearts_container = NodePath("Container/MarginContainer/TopBar/Hearts")
+hearts_container = NodePath("Container/MarginContainer/TopBar/VBoxContainer/Hearts")
 full_heart_scene = ExtResource("2_g3dfi")
 empty_heart_scene = ExtResource("3_b2084")
-score_label = NodePath("Container/MarginContainer/TopBar/ScoreLabel")
+charges_container = NodePath("Container/MarginContainer/TopBar/VBoxContainer/Charges")
+full_charge_scene = ExtResource("4_nblks")
+empty_charge_scene = ExtResource("5_7a44y")
+score_label = NodePath("Container/MarginContainer/TopBar/GridContainer/ScoreLabel")
 
 [node name="Container" type="Control" parent="."]
 layout_mode = 3
@@ -38,7 +43,14 @@ theme_override_constants/margin_bottom = 20
 [node name="TopBar" type="HFlowContainer" parent="Container/MarginContainer"]
 layout_mode = 2
 
-[node name="Hearts" type="HBoxContainer" parent="Container/MarginContainer/TopBar"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Container/MarginContainer/TopBar"]
+layout_mode = 2
+
+[node name="Hearts" type="HBoxContainer" parent="Container/MarginContainer/TopBar/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Charges" type="HBoxContainer" parent="Container/MarginContainer/TopBar/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 
@@ -47,17 +59,21 @@ layout_mode = 2
 size_flags_horizontal = 3
 alignment = 2
 
-[node name="Panel" type="Panel" parent="Container/MarginContainer/TopBar"]
+[node name="GridContainer" type="GridContainer" parent="Container/MarginContainer/TopBar"]
+layout_mode = 2
+columns = 2
+
+[node name="Panel" type="Panel" parent="Container/MarginContainer/TopBar/GridContainer"]
 custom_minimum_size = Vector2(38, 38)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_0mk3h")
 
-[node name="Sprite2D" type="Sprite2D" parent="Container/MarginContainer/TopBar/Panel"]
+[node name="Sprite2D" type="Sprite2D" parent="Container/MarginContainer/TopBar/GridContainer/Panel"]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("3_f48rb")
 centered = false
 
-[node name="ScoreLabel" type="Label" parent="Container/MarginContainer/TopBar"]
+[node name="ScoreLabel" type="Label" parent="Container/MarginContainer/TopBar/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_font_sizes/font_size = 32
