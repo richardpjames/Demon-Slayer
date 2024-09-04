@@ -4,8 +4,6 @@ extends CharacterBody2D
 # Configuration variables
 @export var health: int
 @export var speed: int
-@export var attack_cooldown_time: float
-@export var projectile_scene: PackedScene
 @export var blood_particles: PackedScene
 @export var sprites: Node2D
 @export var animation_player: AnimationPlayer
@@ -15,7 +13,6 @@ extends CharacterBody2D
 
 # Private variables
 var _direction: Vector2 = Vector2.DOWN
-var _attack_end_time: float = 0
 var _dash_direction: Vector2 = Vector2.ZERO
 
 # For tracking state
@@ -75,14 +72,11 @@ func _set_direction() -> Vector2:
 	return direction
 
 func _attack() -> void:
-	# Check that previous attacks are complete and player is alive
-	if(Time.get_ticks_msec() > _attack_end_time && current_state != State.DEAD):
-		# Then check for inputs
-		if(Input.is_action_pressed("Fire")):
-			# Increment the cooldown timer by the cooldown in milliseconds
-			_attack_end_time = Time.get_ticks_msec() + (attack_cooldown_time * 1000)
-			weapon.fire(get_global_mouse_position())
-			
+	# Check for inputs and player is alive
+	if(Input.is_action_pressed("Fire") && current_state != State.DEAD):
+		# Increment the cooldown timer by the cooldown in milliseconds
+		weapon.fire(get_global_mouse_position())
+
 # This method provides basics before being overridden by extending classes
 func take_damage(damage: int) -> bool:
 	# If we are dashing then bullets don't hit

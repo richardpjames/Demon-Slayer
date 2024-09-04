@@ -4,12 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://bxhxw2ipgug3l" path="res://scenes/projectiles/demon_projectile.tscn" id="2_le43y"]
 [ext_resource type="Texture2D" uid="uid://dp7cpubt4aod5" path="res://assets/weapons/basic_weapon.png" id="3_v4n6r"]
 
-[node name="Weapon" type="Node2D" node_paths=PackedStringArray("fire_point")]
+[node name="DemonWeapon" type="Node2D" node_paths=PackedStringArray("fire_point")]
 show_behind_parent = true
 rotation = -0.136503
 script = ExtResource("1_o68x3")
 projectile_scene = ExtResource("2_le43y")
 fire_point = NodePath("FirePoint")
+cooldown_time = 2.0
+damage = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708

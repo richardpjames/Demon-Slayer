@@ -4,12 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://bgvgwfm18c117" path="res://scenes/projectiles/void_projectile.tscn" id="2_7duvt"]
 [ext_resource type="Texture2D" uid="uid://dp7cpubt4aod5" path="res://assets/weapons/basic_weapon.png" id="3_8ci5a"]
 
-[node name="Weapon" type="Node2D" node_paths=PackedStringArray("fire_point")]
+[node name="VoidWeapon" type="Node2D" node_paths=PackedStringArray("fire_point")]
 show_behind_parent = true
 rotation = -0.136503
 script = ExtResource("1_cbaxe")
 projectile_scene = ExtResource("2_7duvt")
 fire_point = NodePath("FirePoint")
+cooldown_time = 5.0
+damage = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 rotation = 1.5708

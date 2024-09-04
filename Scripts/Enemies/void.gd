@@ -54,6 +54,3 @@ func _animate() -> void:
 		animation_player.play("Idle")
 	elif(current_state == State.RUNNING):
 		animation_player.play("Run")
-
-func end_attack() -> void:
-	current_state = State.IDLE

@@ -5,7 +5,7 @@ extends Weapon
 const ATTACK_DIRECTIONS = 16
 
 # Fires projectiles in a circle from the fire point
-func fire(_destination: Vector2) -> void:
+func generate_projectiles(_destination: Vector2) -> void:
 	# Create projectiles in the specified number of directions
 	for i in ATTACK_DIRECTIONS:
 		# Instantiate projectiles

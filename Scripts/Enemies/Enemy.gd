@@ -16,10 +16,6 @@ extends CharacterBody2D
 # For firing weapons
 @export var weapon: Weapon
 @export var attack_distance: float
-@export var attack_cooldown: float
-
-# For tracking attacks
-var _attack_end_time: float = 0
 
 # For tracking state
 enum State {IDLE, RUNNING, ATTACKING}
@@ -62,12 +58,10 @@ func can_see_player() -> bool:
 
 func _attack() -> void:
 	# If the player is close enough and we have finished the cooldown
-	if(global_position.distance_to(_player.global_position) < attack_distance && Time.get_ticks_msec() > _attack_end_time):
+	if(global_position.distance_to(_player.global_position) < attack_distance):
 		if(can_see_player()):
 			# Fire the weapon
 			weapon.fire(_player.global_position)
-			# Reset the cooldown (multiply by 1000 to deal with milliseconds)
-			_attack_end_time = Time.get_ticks_msec() + (attack_cooldown * 1000)
 
 func _drop_item() -> void:
 	var rng = RandomNumberGenerator.new()

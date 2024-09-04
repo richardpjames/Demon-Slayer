@@ -462,7 +462,6 @@ animation_player = NodePath("Animations")
 health_drop = ExtResource("4_r0xh0")
 weapon = NodePath("Sprites/Torso/Left Arm/Left Hand/Weapon")
 attack_distance = 2000.0
-attack_cooldown = 5.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 physics_interpolation_mode = 1
