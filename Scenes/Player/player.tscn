@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://bga08ako617jr"]
+[gd_scene load_steps=14 format=3 uid="uid://bga08ako617jr"]
 
 [ext_resource type="Script" path="res://scripts/player/player.gd" id="1_jo20q"]
 [ext_resource type="Script" path="res://scripts/utilities/game_camera.gd" id="2_mnyix"]
 [ext_resource type="PackedScene" uid="uid://b6iud7ni2webl" path="res://scenes/fx/blood_particles.tscn" id="3_0o2yn"]
+[ext_resource type="PackedScene" uid="uid://rdawn7ruw81c" path="res://scenes/fx/hurt_notifier.tscn" id="3_1uel1"]
 [ext_resource type="Texture2D" uid="uid://kl8xj5pgjm8r" path="res://assets/characters/player.png" id="3_uska8"]
 [ext_resource type="PackedScene" uid="uid://djit5ae80fpg2" path="res://scenes/weapons/basic_weapon.tscn" id="6_7fejv"]
 [ext_resource type="Texture2D" uid="uid://by4u6bgeb7eb" path="res://assets/environment/light_shape.png" id="6_q3dta"]
@@ -577,13 +578,16 @@ animation_player = NodePath("Animations")
 weapon = NodePath("Sprites/Torso/Left Arm/Left Hand/Weapon")
 dash_speed = 4500.0
 dash_time = 0.15
+hurt_notifier_scene = ExtResource("3_1uel1")
 
 [node name="GameCamera" type="Camera2D" parent="."]
 zoom = Vector2(0.25, 0.25)
 position_smoothing_enabled = true
 script = ExtResource("2_mnyix")
-shake_intensity = 250
-shake_duration = 1.0
+shake_intensity = 1000
+shake_intensity_small = 125
+shake_duration = 0.8
+offset_scale = 0.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 1

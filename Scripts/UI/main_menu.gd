@@ -8,6 +8,10 @@ extends Control
 func _ready() -> void:
 	play_button.pressed.connect(_start_game)
 	quit_button.pressed.connect(_quit_game)
+
+func _process(_delta: float) -> void:
+	if(Input.is_action_just_pressed("MainMenu")):
+		get_tree().quit()
 	
 func _start_game() -> void:
 	SignalManager.on_game_start.emit()

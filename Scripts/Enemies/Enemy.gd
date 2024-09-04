@@ -88,7 +88,8 @@ func _animate() -> void:
 
 # This method provides basics before being overridden by extending classes
 func take_damage(damage: int) -> bool:
-		# Subtract the amount of damage from health (set in Enemy class)
+	SignalManager.on_enemy_hit.emit()
+	# Subtract the amount of damage from health (set in Enemy class)
 	health -= damage
 	# Instantiate the blood particles
 	var particles = blood_particles.instantiate()

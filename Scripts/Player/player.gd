@@ -10,6 +10,7 @@ extends CharacterBody2D
 @export var weapon: Weapon
 @export var dash_speed: float
 @export var dash_time: float
+@export var hurt_notifier_scene: PackedScene
 
 # Private variables
 var _direction: Vector2 = Vector2.DOWN
@@ -91,6 +92,10 @@ func take_damage(damage: int) -> bool:
 	particles.global_position = global_position
 	# Add to the root so not attached to this position
 	get_tree().root.add_child(particles)
+	# Instantiate the hurt notified
+	var notifier = hurt_notifier_scene.instantiate()
+	# Add to the root so not attached to this position
+	get_tree().root.add_child(notifier)
 	# Confirm that damage was taken
 	return true
 

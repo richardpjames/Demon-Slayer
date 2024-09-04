@@ -18,7 +18,6 @@ func _ready() -> void:
 	SignalManager.on_game_start.connect(_start_game)
 	SignalManager.on_main_menu_requested.connect(_main_menu)
 	SignalManager.on_enemy_killed.connect(_increase_score)
-	SignalManager.on_special_attack_complete.connect(_decrease_score)
 
 # Reset stats to put health back to max
 func _reset_game() -> void:
