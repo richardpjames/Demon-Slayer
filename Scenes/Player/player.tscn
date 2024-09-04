@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://bga08ako617jr"]
+[gd_scene load_steps=14 format=3 uid="uid://bga08ako617jr"]
 
 [ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_jo20q"]
 [ext_resource type="PackedScene" uid="uid://1aemxvhscymx" path="res://Scenes/Projectiles/projectile.tscn" id="2_htgr2"]
 [ext_resource type="Script" path="res://Scripts/Utilities/game_camera.gd" id="2_mnyix"]
 [ext_resource type="PackedScene" uid="uid://b6iud7ni2webl" path="res://Scenes/FX/blood_particles.tscn" id="3_0o2yn"]
 [ext_resource type="Texture2D" uid="uid://kl8xj5pgjm8r" path="res://Assets/Characters/Player.png" id="3_uska8"]
+[ext_resource type="PackedScene" uid="uid://djit5ae80fpg2" path="res://Scenes/Weapons/basic_weapon.tscn" id="6_7fejv"]
 [ext_resource type="Texture2D" uid="uid://by4u6bgeb7eb" path="res://Assets/Environment/Light Shape.png" id="6_q3dta"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t3qxr"]
@@ -566,7 +567,7 @@ _data = {
 "Run": SubResource("Animation_jko4l")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprites", "animation_player") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("sprites", "animation_player", "weapon") groups=["Player"]]
 collision_layer = 3
 motion_mode = 1
 script = ExtResource("1_jo20q")
@@ -576,9 +577,12 @@ projectile_scene = ExtResource("2_htgr2")
 blood_particles = ExtResource("3_0o2yn")
 sprites = NodePath("Sprites")
 animation_player = NodePath("Animations")
+weapon = NodePath("Sprites/Torso/Left Arm/Left Hand/Weapon")
+dash_speed = 6000.0
+dash_time = 0.15
 
 [node name="GameCamera" type="Camera2D" parent="."]
-zoom = Vector2(0.3, 0.3)
+zoom = Vector2(0.25, 0.25)
 position_smoothing_enabled = true
 script = ExtResource("2_mnyix")
 shake_intensity = 250
@@ -626,6 +630,8 @@ position = Vector2(-6, 48)
 texture = ExtResource("3_uska8")
 region_enabled = true
 region_rect = Rect2(243.011, 182.165, 55.1341, 49.5081)
+
+[node name="Weapon" parent="Sprites/Torso/Left Arm/Left Hand" instance=ExtResource("6_7fejv")]
 
 [node name="Right Arm" type="Sprite2D" parent="Sprites/Torso"]
 z_index = -1

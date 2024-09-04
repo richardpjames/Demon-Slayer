@@ -1,10 +1,10 @@
 [gd_scene load_steps=13 format=3 uid="uid://bidlbshk7kk32"]
 
 [ext_resource type="Script" path="res://Scripts/Enemies/void.gd" id="1_iyxuy"]
-[ext_resource type="PackedScene" uid="uid://bgvgwfm18c117" path="res://Scenes/Projectiles/void_projectile.tscn" id="2_dmtb4"]
 [ext_resource type="PackedScene" uid="uid://ca6nqouwoc00r" path="res://Scenes/FX/void_particles.tscn" id="2_tr2o4"]
 [ext_resource type="Texture2D" uid="uid://6j1sicjn6xij" path="res://Assets/Characters/Void.png" id="3_u4nh4"]
 [ext_resource type="PackedScene" uid="uid://dwaf2kq05klj" path="res://Scenes/Drops/health_drop.tscn" id="4_r0xh0"]
+[ext_resource type="PackedScene" uid="uid://bdq71v7xsxh2t" path="res://Scenes/Weapons/void_weapon.tscn" id="6_bncaj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3nwt7"]
 radius = 97.0
@@ -449,21 +449,20 @@ _data = {
 "Run": SubResource("Animation_jko4l")
 }
 
-[node name="Void" type="CharacterBody2D" node_paths=PackedStringArray("sprites", "animation_player") groups=["Enemy"]]
+[node name="Void" type="CharacterBody2D" node_paths=PackedStringArray("sprites", "animation_player", "weapon") groups=["Enemy"]]
 collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_iyxuy")
-damage = 1
-attack_distance = 2000.0
-attack_cooldown = 1.0
 sprites = NodePath("Sprites")
-projectile_scene = ExtResource("2_dmtb4")
 health = 5
 activation_distance = 2000.0
 speed = 400
 blood_particles = ExtResource("2_tr2o4")
 animation_player = NodePath("Animations")
 health_drop = ExtResource("4_r0xh0")
+weapon = NodePath("Sprites/Torso/Left Arm/Left Hand/Weapon")
+attack_distance = 2000.0
+attack_cooldown = 5.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 physics_interpolation_mode = 1
@@ -507,6 +506,8 @@ position = Vector2(-6, 48)
 texture = ExtResource("3_u4nh4")
 region_enabled = true
 region_rect = Rect2(243.011, 182.165, 55.1341, 49.5081)
+
+[node name="Weapon" parent="Sprites/Torso/Left Arm/Left Hand" instance=ExtResource("6_bncaj")]
 
 [node name="Right Arm" type="Sprite2D" parent="Sprites/Torso"]
 z_index = -1

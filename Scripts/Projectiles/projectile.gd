@@ -34,17 +34,18 @@ func _physics_process(delta: float) -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if(!body.is_in_group(group_to_ignore)):
 		# Damage any enemies
+		var success: bool = false
 		if(body.is_in_group(group_to_damage)):
-			body.take_damage(damage)
-		else:
+			success = body.take_damage(damage)
+		if(success || !body.is_in_group(group_to_damage)):
 			# Instantiate the splash particles
 			var splash = particles.instantiate()
 			# Put it where the projectile was destroyed
 			splash.global_position = global_position
 			# Add to the root so not attached to this position
 			get_tree().root.add_child(splash)
-		# Destroy this object
-		queue_free()
+			# Destroy this object
+			queue_free()
 
 func set_direction(new_direction: Vector2) -> void:
 	_direction = new_direction

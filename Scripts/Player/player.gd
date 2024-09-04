@@ -9,25 +9,30 @@ extends CharacterBody2D
 @export var blood_particles: PackedScene
 @export var sprites: Node2D
 @export var animation_player: AnimationPlayer
+@export var weapon: Weapon
+@export var dash_speed: float
+@export var dash_time: float
 
 # Private variables
 var _direction: Vector2 = Vector2.DOWN
 var _attack_end_time: float = 0
+var _dash_direction: Vector2 = Vector2.ZERO
 
 # For tracking state
-enum State {IDLE, RUNNING, ATTACKING, DEAD}
+enum State {IDLE, RUNNING, ATTACKING, DEAD, DASHING}
 var current_state: State = State.IDLE
-
-# Constants
-const SPECIAL_ATTACK_DIRECTIONS = 16
 
 func _ready() -> void:
 	SignalManager.on_player_death.connect(_die)
 
 # Called each frame
 func _process(_delta: float) -> void:
+	# Check for dashing first
+	_dash()
 	# Get the player direction from input if they are not dead
 	if(current_state != State.DEAD):
+			# Update weapon
+		weapon.point_at_mouse()
 		_direction = _set_direction()
 		# Flip the sprite depending on direction to the mouse cursor
 		if(_direction.x < 0):
@@ -35,9 +40,9 @@ func _process(_delta: float) -> void:
 		if(_direction.x > 0):
 			sprites.scale = Vector2(1,1)
 		# Set the player state
-		if(velocity != Vector2.ZERO):
+		if(velocity != Vector2.ZERO && current_state != State.DASHING):
 			current_state = State.RUNNING
-		elif(current_state != State.DEAD):
+		elif(current_state != State.DASHING):
 			current_state = State.IDLE
 		# Deal with attacking
 		_attack()
@@ -45,20 +50,27 @@ func _process(_delta: float) -> void:
 		_animate()
 	else:
 		_direction = Vector2.ZERO
+
 # Called each physics frame
 func _physics_process(_delta: float) -> void:
-	# Velocity is built into the character controller
-	velocity = _direction * speed
+	if(current_state == State.DASHING):
+		# If dashing use the increased dash speed
+		velocity = _direction * dash_speed
+	else:
+		# Velocity is built into the character controller
+		velocity = _direction * speed
 	# Move the character based on velocity
 	move_and_slide()
 
 # Determine the direction to move the player based on input
 func _set_direction() -> Vector2:
+	# If we are dashing then return the dash direction
+	if(current_state == State.DASHING):
+		return _dash_direction
 	# Initialise the direction as zero
 	var direction = Vector2.ZERO
 	# See which buttons are being pressed and set the vector accordingly
-	direction.y = Input.get_axis("Up", "Down")
-	direction.x = Input.get_axis("Left", "Right")
+	direction = Input.get_vector("Left", "Right", "Up", "Down")
 	# Return the direction
 	return direction
 
@@ -69,33 +81,13 @@ func _attack() -> void:
 		if(Input.is_action_pressed("Fire")):
 			# Increment the cooldown timer by the cooldown in milliseconds
 			_attack_end_time = Time.get_ticks_msec() + (attack_cooldown_time * 1000)
-			# Instantiate the projectile
-			var projectile = projectile_scene.instantiate()
-			# Set the start position to the player
-			projectile.global_position = global_position
-			projectile.set_direction(global_position.direction_to(get_global_mouse_position()).normalized())
-			# Attach the projectile to the tree
-			get_tree().root.add_child(projectile)
-		elif(Input.is_action_pressed("SpecialAttack") && GameManager.get_score() > 0):
-			# Increment the cooldown timer by the cooldown in milliseconds
-			_attack_end_time = Time.get_ticks_msec() + (attack_cooldown_time * 1000)
-			# Create projectiles in the specified number of directions
-			for i in SPECIAL_ATTACK_DIRECTIONS:
-				# Instantiate projectiles
-				var projectile = projectile_scene.instantiate()
-				# Start at the player
-				projectile.global_position = global_position
-				# Base the direction on rotating around a circle
-				projectile.set_direction(Vector2.ONE.rotated((2 * PI / SPECIAL_ATTACK_DIRECTIONS) * i).normalized())
-				# Get additional damage
-				projectile.set_damage(3)
-				get_tree().root.add_child(projectile)
-			# Reduce the score to do this
-			SignalManager.on_special_attack_complete.emit()
+			weapon.fire(get_global_mouse_position())
 			
-		
 # This method provides basics before being overridden by extending classes
-func take_damage(damage: int) -> void:
+func take_damage(damage: int) -> bool:
+	# If we are dashing then bullets don't hit
+	if(current_state == State.DASHING):
+		return false
 	# Emit the signal that we are hit
 	SignalManager.on_player_hit.emit(damage)
 	# Instantiate the blood particles
@@ -104,6 +96,8 @@ func take_damage(damage: int) -> void:
 	particles.global_position = global_position
 	# Add to the root so not attached to this position
 	get_tree().root.add_child(particles)
+	# Confirm that damage was taken
+	return true
 
 func _die() -> void:
 	current_state = State.DEAD
@@ -116,7 +110,19 @@ func _animate() -> void:
 		animation_player.play("Run")
 
 func idle() -> void:
+	print("Back to Idle")
 	current_state = State.IDLE
 
 func signal_game_over() -> void:
 	SignalManager.on_game_over.emit()
+
+func _dash() -> void:
+	# Check for input and that we are not already dashing
+	if(Input.is_action_just_pressed("Dash") && current_state != State.DASHING):
+		print("Dashing")
+		# Determine where we will dash to
+		_dash_direction = (get_global_mouse_position() - global_position).normalized()
+		# Set out status to prevent other input
+		current_state = State.DASHING
+		# Wait for the tween to complete and then set to idle
+		get_tree().create_timer(dash_time).timeout.connect(idle)

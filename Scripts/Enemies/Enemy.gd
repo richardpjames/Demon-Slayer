@@ -13,6 +13,13 @@ extends CharacterBody2D
 @export var animation_player: AnimationPlayer
 # For dropping health packs
 @export var health_drop: PackedScene
+# For firing weapons
+@export var weapon: Weapon
+@export var attack_distance: float
+@export var attack_cooldown: float
+
+# For tracking attacks
+var _attack_end_time: float = 0
 
 # For tracking state
 enum State {IDLE, RUNNING, ATTACKING}
@@ -23,7 +30,7 @@ var current_state: State = State.IDLE
 @onready var _player: Player = get_tree().get_first_node_in_group("Player")
 
 # This method provides basics before being overridden by extending classes
-func take_damage(damage: int) -> void:
+func take_damage(damage: int) -> bool:
 		# Subtract the amount of damage from health (set in Enemy class)
 	health -= damage
 	# Instantiate the blood particles
@@ -37,6 +44,30 @@ func take_damage(damage: int) -> void:
 		_drop_item()
 		queue_free()
 		SignalManager.on_enemy_killed.emit()
+	# Confirm that damage was taken
+	return true
+
+func can_see_player() -> bool:
+		# Check if there is clear line of sight to the player
+		var space_state: PhysicsDirectSpaceState2D = get_world_2d().direct_space_state
+		# Perform a ray trace masked to "2"
+		var query: PhysicsRayQueryParameters2D = PhysicsRayQueryParameters2D.create(global_position, _player.global_position, 2)
+		var result: Dictionary = space_state.intersect_ray(query)
+		# If we hit something - check if it is the player and return the direction
+		if(result):
+			if(result["collider"].is_in_group("Player")):
+				return true
+		# If we have not hit something, or it is not the player
+		return false
+
+func _attack() -> void:
+	# If the player is close enough and we have finished the cooldown
+	if(global_position.distance_to(_player.global_position) < attack_distance && Time.get_ticks_msec() > _attack_end_time):
+		if(can_see_player()):
+			# Fire the weapon
+			weapon.fire(_player.global_position)
+			# Reset the cooldown (multiply by 1000 to deal with milliseconds)
+			_attack_end_time = Time.get_ticks_msec() + (attack_cooldown * 1000)
 
 func _drop_item() -> void:
 	var rng = RandomNumberGenerator.new()
