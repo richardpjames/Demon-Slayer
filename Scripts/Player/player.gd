@@ -114,7 +114,8 @@ func _dash() -> void:
 	# Check for input and that we are not already dashing
 	if(Input.is_action_just_pressed("Dash") && current_state != State.DASHING && current_state != State.DEAD):
 		# Determine where we will dash to
-		_dash_direction = (get_global_mouse_position() - global_position).normalized()
+		#_dash_direction = (get_global_mouse_position() - global_position).normalized()
+		_dash_direction = velocity.normalized()
 		# Set out status to prevent other input
 		current_state = State.DASHING
 		# Wait for the tween to complete and then set to idle
