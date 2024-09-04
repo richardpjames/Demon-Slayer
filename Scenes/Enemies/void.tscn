@@ -1,14 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://bidlbshk7kk32"]
+[gd_scene load_steps=14 format=3 uid="uid://bidlbshk7kk32"]
 
 [ext_resource type="Script" path="res://scripts/enemies/void.gd" id="1_iyxuy"]
 [ext_resource type="PackedScene" uid="uid://ca6nqouwoc00r" path="res://scenes/fx/void_particles.tscn" id="2_tr2o4"]
 [ext_resource type="Texture2D" uid="uid://6j1sicjn6xij" path="res://assets/characters/void.png" id="3_u4nh4"]
 [ext_resource type="PackedScene" uid="uid://dwaf2kq05klj" path="res://scenes/drops/health_drop.tscn" id="4_r0xh0"]
 [ext_resource type="PackedScene" uid="uid://bdq71v7xsxh2t" path="res://scenes/weapons/void_weapon.tscn" id="6_bncaj"]
+[ext_resource type="PackedScene" uid="uid://u23admvm6lf1" path="res://scenes/navigation/navigation_agent.tscn" id="6_kb5a7"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3nwt7"]
-radius = 97.0
-height = 290.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_kg2np"]
+radius = 152.643
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_nen7g"]
 polygon = PackedVector2Array(-79, -146, -58, -196, -16, -220, 42, -210, 61, -166, 58, -90, 24, -61, 20, -17, 25, 16, -32, 21, -18, -26, -23, -86, -67, -94)
@@ -449,11 +449,11 @@ _data = {
 "Run": SubResource("Animation_jko4l")
 }
 
-[node name="Void" type="CharacterBody2D" node_paths=PackedStringArray("sprites", "animation_player", "weapon") groups=["Enemy"]]
+[node name="Void" type="CharacterBody2D" node_paths=PackedStringArray("animation_player", "weapon", "navigation_agent", "sprites") groups=["Enemy"]]
 collision_mask = 3
 motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_iyxuy")
-sprites = NodePath("Sprites")
 health = 5
 activation_distance = 2000.0
 speed = 400
@@ -462,11 +462,13 @@ animation_player = NodePath("Animations")
 health_drop = ExtResource("4_r0xh0")
 weapon = NodePath("Sprites/Torso/Left Arm/Left Hand/Weapon")
 attack_distance = 2000.0
+navigation_agent = NodePath("NavigationAgent2D")
+sprites = NodePath("Sprites")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 physics_interpolation_mode = 1
 position = Vector2(-7, -82)
-shape = SubResource("CapsuleShape2D_3nwt7")
+shape = SubResource("CircleShape2D_kg2np")
 
 [node name="Sprites" type="Node2D" parent="."]
 
@@ -548,3 +550,5 @@ libraries = {
 "": SubResource("AnimationLibrary_lrjd5")
 }
 autoplay = "Idle"
+
+[node name="NavigationAgent2D" parent="." instance=ExtResource("6_kb5a7")]

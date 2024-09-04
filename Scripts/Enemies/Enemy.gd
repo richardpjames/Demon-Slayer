@@ -16,14 +16,77 @@ extends CharacterBody2D
 # For firing weapons
 @export var weapon: Weapon
 @export var attack_distance: float
+# For navigating the environment
+@export var navigation_agent: NavigationAgent2D
+# For scaling and rotating the image
+@export var sprites: Node2D
 
 # For tracking state
 enum State {IDLE, RUNNING, ATTACKING}
 var current_state: State = State.IDLE
 
+# Private variables
+var _activated: bool = false
+var _direction: Vector2 = Vector2.ZERO
+
 # Get a reference to the player as a private variable
 @warning_ignore("unused_private_class_variable")
 @onready var _player: Player = get_tree().get_first_node_in_group("Player")
+
+func _ready() -> void:
+	# Connect signals from our navigation agent
+	navigation_agent.velocity_computed.connect(Callable(_on_velocity_computed))
+
+func _process(_delta: float) -> void:
+	# If we can see the player and they are less than the activation distance then wake up
+	if(can_see_player() && global_position.distance_to(_player.global_position) < activation_distance):
+		_activated = true
+		
+	if(_activated && _player.current_state != _player.State.DEAD):
+		_set_movement_target(_player.global_position)
+		# Flip the sprite depending on direction
+		if(_direction.x < 0):
+			sprites.scale = Vector2(-1,1)
+		if(_direction.x > 0):
+			sprites.scale = Vector2(1,1)
+		# Set the enemy state
+		if(velocity != Vector2.ZERO):
+			current_state = State.RUNNING
+		else:
+			current_state = State.IDLE
+		# Handle any attacking
+		_attack()
+		# Animate
+		_animate()
+
+# When our navigation agent has computer velocity, move the enemy
+func _on_velocity_computed(safe_velocity: Vector2):
+	velocity = safe_velocity
+	move_and_slide()
+
+func _physics_process(_delta: float) -> void:
+	# Do not query when the map has never synchronized and is empty.
+	if NavigationServer2D.map_get_iteration_id(navigation_agent.get_navigation_map()) == 0:
+		return
+	if navigation_agent.is_navigation_finished():
+		return
+
+	# Taken from the example documents:
+	var next_path_position: Vector2 = navigation_agent.get_next_path_position()
+	var new_velocity: Vector2 = global_position.direction_to(next_path_position) * speed
+	if navigation_agent.avoidance_enabled:
+		navigation_agent.set_velocity(new_velocity)
+	else:
+		_on_velocity_computed(new_velocity)
+
+func _set_movement_target(target: Vector2):
+	navigation_agent.set_target_position(target)
+
+func _animate() -> void:
+	if(current_state == State.IDLE):
+		animation_player.play("Idle")
+	elif(current_state == State.RUNNING):
+		animation_player.play("Run")
 
 # This method provides basics before being overridden by extending classes
 func take_damage(damage: int) -> bool:
