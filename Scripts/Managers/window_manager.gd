@@ -1,7 +1,7 @@
 extends Node
 
 # Store whether we are full screen or not
-var _full_screen: bool
+var _full_screen: bool = true
 
 # Check for input to switch full screen
 func _process(_delta: float) -> void:

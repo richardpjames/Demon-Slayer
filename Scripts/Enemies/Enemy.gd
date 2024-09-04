@@ -56,6 +56,9 @@ func _process(_delta: float) -> void:
 		_attack()
 		# Animate
 		_animate()
+	# If the player is dead then just stay still
+	if(_activated && _player.current_state == _player.State.DEAD):
+		_set_movement_target(global_position)
 
 # When our navigation agent has computer velocity, move the enemy
 func _on_velocity_computed(safe_velocity: Vector2):
