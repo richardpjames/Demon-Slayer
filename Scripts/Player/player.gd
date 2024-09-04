@@ -110,7 +110,6 @@ func _animate() -> void:
 		animation_player.play("Run")
 
 func idle() -> void:
-	print("Back to Idle")
 	current_state = State.IDLE
 
 func signal_game_over() -> void:
@@ -118,8 +117,7 @@ func signal_game_over() -> void:
 
 func _dash() -> void:
 	# Check for input and that we are not already dashing
-	if(Input.is_action_just_pressed("Dash") && current_state != State.DASHING):
-		print("Dashing")
+	if(Input.is_action_just_pressed("Dash") && current_state != State.DASHING && current_state != State.DEAD):
 		# Determine where we will dash to
 		_dash_direction = (get_global_mouse_position() - global_position).normalized()
 		# Set out status to prevent other input

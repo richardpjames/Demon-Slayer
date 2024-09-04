@@ -1,12 +1,12 @@
 [gd_scene load_steps=14 format=3 uid="uid://bga08ako617jr"]
 
-[ext_resource type="Script" path="res://Scripts/Player/player.gd" id="1_jo20q"]
-[ext_resource type="PackedScene" uid="uid://1aemxvhscymx" path="res://Scenes/Projectiles/projectile.tscn" id="2_htgr2"]
-[ext_resource type="Script" path="res://Scripts/Utilities/game_camera.gd" id="2_mnyix"]
-[ext_resource type="PackedScene" uid="uid://b6iud7ni2webl" path="res://Scenes/FX/blood_particles.tscn" id="3_0o2yn"]
-[ext_resource type="Texture2D" uid="uid://kl8xj5pgjm8r" path="res://Assets/Characters/Player.png" id="3_uska8"]
-[ext_resource type="PackedScene" uid="uid://djit5ae80fpg2" path="res://Scenes/Weapons/basic_weapon.tscn" id="6_7fejv"]
-[ext_resource type="Texture2D" uid="uid://by4u6bgeb7eb" path="res://Assets/Environment/Light Shape.png" id="6_q3dta"]
+[ext_resource type="Script" path="res://scripts/player/player.gd" id="1_jo20q"]
+[ext_resource type="PackedScene" uid="uid://1aemxvhscymx" path="res://scenes/projectiles/projectile.tscn" id="2_htgr2"]
+[ext_resource type="Script" path="res://scripts/utilities/game_camera.gd" id="2_mnyix"]
+[ext_resource type="PackedScene" uid="uid://b6iud7ni2webl" path="res://scenes/fx/blood_particles.tscn" id="3_0o2yn"]
+[ext_resource type="Texture2D" uid="uid://kl8xj5pgjm8r" path="res://assets/characters/player.png" id="3_uska8"]
+[ext_resource type="PackedScene" uid="uid://djit5ae80fpg2" path="res://scenes/weapons/basic_weapon.tscn" id="6_7fejv"]
+[ext_resource type="Texture2D" uid="uid://by4u6bgeb7eb" path="res://assets/environment/light_shape.png" id="6_q3dta"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t3qxr"]
 radius = 90.0

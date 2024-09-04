@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://nsii40d8e4h0"]
 
-[ext_resource type="Texture2D" uid="uid://b11annljnxb45" path="res://Assets/UI/Heart.png" id="1_sdyrc"]
+[ext_resource type="Texture2D" uid="uid://b11annljnxb45" path="res://assets/ui/heart.png" id="1_sdyrc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0mk3h"]
 bg_color = Color(0.6, 0.6, 0.6, 0)

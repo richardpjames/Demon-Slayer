@@ -1,10 +1,10 @@
 [gd_scene load_steps=13 format=3 uid="uid://bidlbshk7kk32"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/void.gd" id="1_iyxuy"]
-[ext_resource type="PackedScene" uid="uid://ca6nqouwoc00r" path="res://Scenes/FX/void_particles.tscn" id="2_tr2o4"]
-[ext_resource type="Texture2D" uid="uid://6j1sicjn6xij" path="res://Assets/Characters/Void.png" id="3_u4nh4"]
-[ext_resource type="PackedScene" uid="uid://dwaf2kq05klj" path="res://Scenes/Drops/health_drop.tscn" id="4_r0xh0"]
-[ext_resource type="PackedScene" uid="uid://bdq71v7xsxh2t" path="res://Scenes/Weapons/void_weapon.tscn" id="6_bncaj"]
+[ext_resource type="Script" path="res://scripts/enemies/void.gd" id="1_iyxuy"]
+[ext_resource type="PackedScene" uid="uid://ca6nqouwoc00r" path="res://scenes/fx/void_particles.tscn" id="2_tr2o4"]
+[ext_resource type="Texture2D" uid="uid://6j1sicjn6xij" path="res://assets/characters/void.png" id="3_u4nh4"]
+[ext_resource type="PackedScene" uid="uid://dwaf2kq05klj" path="res://scenes/drops/health_drop.tscn" id="4_r0xh0"]
+[ext_resource type="PackedScene" uid="uid://bdq71v7xsxh2t" path="res://scenes/weapons/void_weapon.tscn" id="6_bncaj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3nwt7"]
 radius = 97.0

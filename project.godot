@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Demon-Slayer"
-run/main_scene="res://Scenes/UI/main_menu.tscn"
+run/main_scene="res://scenes/ui/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/show_image=false
 boot_splash/fullsize=false
@@ -21,9 +21,9 @@ config/windows_native_icon="res://icon.ico"
 
 [autoload]
 
-SignalManager="*res://Scripts/Managers/signal_manager.gd"
-GameManager="*res://Scripts/Managers/game_manager.gd"
-WindowManager="*res://Scripts/Managers/window_manager.gd"
+SignalManager="*res://scripts/managers/signal_manager.gd"
+GameManager="*res://scripts/managers/game_manager.gd"
+WindowManager="*res://scripts/managers/window_manager.gd"
 
 [display]
 

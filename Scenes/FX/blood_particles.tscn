@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b6iud7ni2webl"]
 
-[ext_resource type="Texture2D" uid="uid://ipvgqnn0e6j" path="res://Assets/Particles/Default Particle.png" id="1_o8h8s"]
-[ext_resource type="Script" path="res://Scripts/Utilities/one_shot_particles.gd" id="1_q3x2d"]
+[ext_resource type="Texture2D" uid="uid://ipvgqnn0e6j" path="res://assets/particles/default_particle.png" id="1_o8h8s"]
+[ext_resource type="Script" path="res://scripts/utilities/one_shot_particles.gd" id="1_q3x2d"]
 
 [sub_resource type="Gradient" id="Gradient_bx3iq"]
 colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)

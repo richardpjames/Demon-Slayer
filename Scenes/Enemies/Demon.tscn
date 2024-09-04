@@ -1,10 +1,10 @@
 [gd_scene load_steps=13 format=3 uid="uid://c2n56kgy5jvyd"]
 
-[ext_resource type="Script" path="res://Scripts/Enemies/demon.gd" id="1_175dc"]
-[ext_resource type="Texture2D" uid="uid://dxvva3i17hcrx" path="res://Assets/Characters/Demon.png" id="2_1tfn2"]
-[ext_resource type="PackedScene" uid="uid://b6iud7ni2webl" path="res://Scenes/FX/blood_particles.tscn" id="2_g1uco"]
-[ext_resource type="PackedScene" uid="uid://dwaf2kq05klj" path="res://Scenes/Drops/health_drop.tscn" id="3_g07wc"]
-[ext_resource type="PackedScene" uid="uid://d1bcui12ypol1" path="res://Scenes/Weapons/demon_weapon.tscn" id="5_fpi8j"]
+[ext_resource type="Script" path="res://scripts/enemies/demon.gd" id="1_175dc"]
+[ext_resource type="Texture2D" uid="uid://dxvva3i17hcrx" path="res://assets/characters/demon.png" id="2_1tfn2"]
+[ext_resource type="PackedScene" uid="uid://b6iud7ni2webl" path="res://scenes/fx/blood_particles.tscn" id="2_g1uco"]
+[ext_resource type="PackedScene" uid="uid://dwaf2kq05klj" path="res://scenes/drops/health_drop.tscn" id="3_g07wc"]
+[ext_resource type="PackedScene" uid="uid://d1bcui12ypol1" path="res://scenes/weapons/demon_weapon.tscn" id="5_fpi8j"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3nwt7"]
 radius = 97.0

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dp7cpubt4aod5"
-path="res://.godot/imported/Basic Weapon.png-e1391dcc8c5942eea5e6e91672d877cd.ctex"
+uid="uid://4mjcn2fcckk4"
+path="res://.godot/imported/health_drop.png-c84255edccf26e85d3f4fc6d52467e4f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Weapons/Basic Weapon.png"
-dest_files=["res://.godot/imported/Basic Weapon.png-e1391dcc8c5942eea5e6e91672d877cd.ctex"]
+source_file="res://assets/drops/health_drop.png"
+dest_files=["res://.godot/imported/health_drop.png-c84255edccf26e85d3f4fc6d52467e4f.ctex"]
 
 [params]
 

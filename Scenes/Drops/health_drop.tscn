@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://dwaf2kq05klj"]
 
-[ext_resource type="Script" path="res://Scripts/Drops/health_drop.gd" id="1_8fthv"]
-[ext_resource type="Texture2D" uid="uid://bptje32sn60pg" path="res://Assets/Particles/Health Particle.png" id="2_mom7c"]
-[ext_resource type="Texture2D" uid="uid://4mjcn2fcckk4" path="res://Assets/Drops/Health Drop.png" id="3_gtmi4"]
+[ext_resource type="Script" path="res://scripts/drops/health_drop.gd" id="1_8fthv"]
+[ext_resource type="Texture2D" uid="uid://bptje32sn60pg" path="res://assets/particles/health_particle.png" id="2_mom7c"]
+[ext_resource type="Texture2D" uid="uid://4mjcn2fcckk4" path="res://assets/drops/health_drop.png" id="3_gtmi4"]
 
 [sub_resource type="Gradient" id="Gradient_ev8x2"]
 colors = PackedColorArray(1, 0, 0, 0.470588, 1, 0, 0, 0.470588)

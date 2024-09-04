@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://by4u6bgeb7eb"
-path="res://.godot/imported/Light Shape.png-2f18cb4b9457ad087b71a8017fd78454.ctex"
+uid="uid://bptje32sn60pg"
+path="res://.godot/imported/health_particle.png-b50289c59bedc5c3b0b0c0b9ee0669ba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Environment/Light Shape.png"
-dest_files=["res://.godot/imported/Light Shape.png-2f18cb4b9457ad087b71a8017fd78454.ctex"]
+source_file="res://assets/particles/health_particle.png"
+dest_files=["res://.godot/imported/health_particle.png-b50289c59bedc5c3b0b0c0b9ee0669ba.ctex"]
 
 [params]
 

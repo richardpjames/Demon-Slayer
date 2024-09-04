@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dxvva3i17hcrx"
-path="res://.godot/imported/Demon.png-855ad286929c1af853edbd94438437bb.ctex"
+path="res://.godot/imported/demon.png-3918e00f5e1762915bfb37b7e2c17b39.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Characters/Demon.png"
-dest_files=["res://.godot/imported/Demon.png-855ad286929c1af853edbd94438437bb.ctex"]
+source_file="res://assets/characters/demon.png"
+dest_files=["res://.godot/imported/demon.png-3918e00f5e1762915bfb37b7e2c17b39.ctex"]
 
 [params]
 
