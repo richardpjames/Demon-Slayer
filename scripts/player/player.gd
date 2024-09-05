@@ -12,10 +12,12 @@ extends CharacterBody2D
 @export var dash_time: float
 @export var hurt_notifier_scene: PackedScene
 @export var directional_light: PointLight2D
+@export var invincibility_period: float
 
 # Private variables
 var _direction: Vector2 = Vector2.DOWN
 var _dash_direction: Vector2 = Vector2.ZERO
+var _invincible_until: float = 0
 
 # For tracking state
 enum State {IDLE, RUNNING, ATTACKING, DEAD, DASHING}
@@ -85,7 +87,7 @@ func _attack() -> void:
 # This method provides basics before being overridden by extending classes
 func take_damage(damage: int) -> bool:
 	# If we are dashing then bullets don't hit
-	if(current_state == State.DASHING):
+	if(current_state == State.DASHING || Time.get_ticks_msec() < _invincible_until):
 		return false
 	# Emit the signal that we are hit
 	SignalManager.on_player_hit.emit(damage)
@@ -99,6 +101,8 @@ func take_damage(damage: int) -> bool:
 	var notifier = hurt_notifier_scene.instantiate()
 	# Add to the root so not attached to this position
 	get_tree().root.add_child(notifier)
+	# Update when we are invincible until
+	_invincible_until = Time.get_ticks_msec() + (invincibility_period * 1000)
 	# Confirm that damage was taken
 	return true
 
