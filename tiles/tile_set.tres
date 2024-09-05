@@ -1,6 +1,4 @@
-[gd_resource type="TileSet" load_steps=19 format=3 uid="uid://d7ujd1ovnkh6"]
-
-[ext_resource type="Texture2D" uid="uid://cjoat0hkinbho" path="res://assets/environment/Tiles.png" id="1_1qw7l"]
+[gd_resource type="TileSet" load_steps=18 format=3 uid="uid://d7ujd1ovnkh6"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_2ot3b"]
 vertices = PackedVector2Array(150, 150, -150, 150, -150, -150, 150, -150)
@@ -81,7 +79,6 @@ polygon = PackedVector2Array(-150, -150, 150, -150, 150, 150, -150, 150)
 polygon = PackedVector2Array(-150, -150, 150, -150, 150, 150, -150, 150)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4n8wn"]
-texture = ExtResource("1_1qw7l")
 texture_region_size = Vector2i(300, 300)
 0:0/0 = 0
 0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_2ot3b")
