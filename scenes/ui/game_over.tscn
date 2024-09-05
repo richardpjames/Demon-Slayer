@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cwwp6t14qg6i1"]
+[gd_scene load_steps=3 format=3 uid="uid://cwwp6t14qg6i1"]
 
 [ext_resource type="Script" path="res://scripts/ui/game_over.gd" id="1_or38g"]
+[ext_resource type="PackedScene" uid="uid://d4c7yn5ihktqi" path="res://scenes/fx/fade_in.tscn" id="2_0o12y"]
 
 [node name="GameOver" type="Control" node_paths=PackedStringArray("menu_button")]
 layout_mode = 3
@@ -32,3 +33,5 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 text = "Main Menu"
+
+[node name="FadeIn" parent="." instance=ExtResource("2_0o12y")]

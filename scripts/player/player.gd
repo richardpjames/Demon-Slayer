@@ -2,7 +2,6 @@ class_name Player
 extends CharacterBody2D
 
 # Configuration variables
-@export var health: int
 @export var speed: int
 @export var blood_particles: PackedScene
 @export var sprites: Node2D

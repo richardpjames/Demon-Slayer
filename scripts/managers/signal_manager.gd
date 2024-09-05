@@ -22,3 +22,6 @@ signal on_main_menu_requested
 signal on_game_over
 @warning_ignore("unused_signal")
 signal on_charges_updated(charges: int, max_charges: int)
+@warning_ignore("unused_signal")
+signal on_new_level_requested(level: PackedScene, player_position: Vector2)
+
