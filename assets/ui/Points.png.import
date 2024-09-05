@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxvva3i17hcrx"
-path="res://.godot/imported/demon.png-3918e00f5e1762915bfb37b7e2c17b39.ctex"
+uid="uid://dulu5vcbvqkb6"
+path="res://.godot/imported/Points.png-304b3806a02dfcc7fe4eeda54e0ad242.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/demon.png"
-dest_files=["res://.godot/imported/demon.png-3918e00f5e1762915bfb37b7e2c17b39.ctex"]
+source_file="res://assets/ui/Points.png"
+dest_files=["res://.godot/imported/Points.png-304b3806a02dfcc7fe4eeda54e0ad242.ctex"]
 
 [params]
 
