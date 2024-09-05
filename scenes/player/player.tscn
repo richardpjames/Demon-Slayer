@@ -581,7 +581,7 @@ dash_speed = 4500.0
 dash_time = 0.15
 hurt_notifier_scene = ExtResource("3_1uel1")
 directional_light = NodePath("PointLight2DForward")
-invincibility_period = 2.0
+invincibility_period = 3.0
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 energy = 1.1

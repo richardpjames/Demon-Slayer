@@ -13,7 +13,7 @@ const GAME_OVER = preload("res://scenes/ui/game_over.tscn")
 # Effects for faing out
 const FADE_OUT = preload("res://scenes/fx/fade_out.tscn")
 # Sedonds that the face in/out takes
-const FADE_DURATION: float = 1
+const FADE_DURATION: float = 0.5
 
 # Connect to signals to deal with events in the game
 func _ready() -> void:

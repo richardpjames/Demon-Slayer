@@ -15,5 +15,5 @@ func generate_projectiles(_destination: Vector2) -> void:
 		# Base the direction on rotating around a circle
 		projectile.set_direction(Vector2.ONE.rotated((2 * PI / ATTACK_DIRECTIONS) * i).normalized())
 		# Get additional damage
-		projectile.set_damage(3)
+		projectile.set_damage(damage)
 		get_tree().root.add_child(projectile)
