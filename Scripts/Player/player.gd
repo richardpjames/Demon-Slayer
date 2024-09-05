@@ -11,6 +11,7 @@ extends CharacterBody2D
 @export var dash_speed: float
 @export var dash_time: float
 @export var hurt_notifier_scene: PackedScene
+@export var directional_light: PointLight2D
 
 # Private variables
 var _direction: Vector2 = Vector2.DOWN
@@ -28,6 +29,8 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	# Check for dashing first
 	_dash()
+	# Point our directional light
+	directional_light.look_at(get_global_mouse_position())
 	# Get the player direction from input if they are not dead
 	if(current_state != State.DEAD):
 			# Update weapon
