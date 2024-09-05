@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://d7ujd1ovnkh6" path="res://tiles/tile_set.tres" id="1_ax3b7"]
 [ext_resource type="PackedScene" uid="uid://bga08ako617jr" path="res://scenes/player/player.tscn" id="2_66ing"]
-[ext_resource type="PackedScene" uid="uid://c2n56kgy5jvyd" path="res://scenes/enemies/Demon.tscn" id="3_m3k6h"]
+[ext_resource type="PackedScene" uid="uid://c2n56kgy5jvyd" path="res://scenes/enemies/demon.tscn" id="3_m3k6h"]
 [ext_resource type="PackedScene" uid="uid://bidlbshk7kk32" path="res://scenes/enemies/void.tscn" id="4_w1fjp"]
 [ext_resource type="PackedScene" uid="uid://d3vdfbbuf72m8" path="res://scenes/ui/hud.tscn" id="5_kigjj"]
 
