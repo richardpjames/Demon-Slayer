@@ -4,3 +4,11 @@ res://scenes/ui/main_menu.tscn
 res://scenes/levels/level_two.tscn
 res://scenes/enemies/black_knight.tscn
 res://scenes/levels/entrance.tscn
+res://scripts/enemies/demon.gd
+res://scripts/enemies/black_knight.gd
+res://scripts/weapons/black_knight.gd
+res://scripts/weapons/black_knight_weapon.gd
+res://scripts/weapons/weapon.gd
+res://scripts/weapons/circle_weapon.gd
+res://scenes/weapons/black_knight_weapon.tscn
+res://scenes/weapons/void_weapon.tscn

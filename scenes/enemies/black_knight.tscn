@@ -1,11 +1,11 @@
 [gd_scene load_steps=14 format=3 uid="uid://cnl0mvelf3iw0"]
 
-[ext_resource type="Script" path="res://scripts/enemies/demon.gd" id="1_imxpw"]
-[ext_resource type="PackedScene" uid="uid://b6iud7ni2webl" path="res://scenes/fx/blood_particles.tscn" id="2_it682"]
+[ext_resource type="Script" path="res://scripts/enemies/black_knight.gd" id="1_whcry"]
+[ext_resource type="PackedScene" uid="uid://ca6nqouwoc00r" path="res://scenes/fx/void_particles.tscn" id="2_duben"]
 [ext_resource type="PackedScene" uid="uid://dwaf2kq05klj" path="res://scenes/drops/health_drop.tscn" id="3_370yp"]
-[ext_resource type="PackedScene" uid="uid://d1bcui12ypol1" path="res://scenes/weapons/demon_weapon.tscn" id="4_ca74g"]
 [ext_resource type="Texture2D" uid="uid://l6mcu1i82a3s" path="res://assets/characters/black_knight.png" id="4_k8ngi"]
 [ext_resource type="PackedScene" uid="uid://u23admvm6lf1" path="res://scenes/navigation/navigation_agent.tscn" id="5_ffu7p"]
+[ext_resource type="PackedScene" uid="uid://fvh5jdak5gba" path="res://scenes/weapons/black_knight_weapon.tscn" id="5_u7wwe"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8xbro"]
 radius = 149.084
@@ -466,14 +466,14 @@ scale = Vector2(1.25, 1.25)
 collision_mask = 3
 motion_mode = 1
 wall_min_slide_angle = 0.0
-script = ExtResource("1_imxpw")
-health = 25
+script = ExtResource("1_whcry")
+health = 30
 activation_distance = 1500.0
 speed = 750
-blood_particles = ExtResource("2_it682")
+blood_particles = ExtResource("2_duben")
 animation_player = NodePath("Animations")
 health_drop = ExtResource("3_370yp")
-weapon = NodePath("Sprites/Torso/Left Arm/Left Hand/Weapon")
+weapon = NodePath("Sprites/Torso/Left Arm/Left Hand/BlackKnightWeapon")
 attack_distance = 5000.0
 navigation_agent = NodePath("NavigationAgent2D")
 sprites = NodePath("Sprites")
@@ -515,7 +515,7 @@ texture = ExtResource("4_k8ngi")
 region_enabled = true
 region_rect = Rect2(283, 66, 52, 56)
 
-[node name="Weapon" parent="Sprites/Torso/Left Arm/Left Hand" instance=ExtResource("4_ca74g")]
+[node name="BlackKnightWeapon" parent="Sprites/Torso/Left Arm/Left Hand" instance=ExtResource("5_u7wwe")]
 
 [node name="Right Arm" type="Sprite2D" parent="Sprites/Torso"]
 z_index = -1

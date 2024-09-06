@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://fvh5jdak5gba"]
+
+[ext_resource type="Script" path="res://scripts/weapons/black_knight_weapon.gd" id="1_hygou"]
+[ext_resource type="PackedScene" uid="uid://bgvgwfm18c117" path="res://scenes/projectiles/void_projectile.tscn" id="2_0kk8d"]
+
+[node name="BlackKnightWeapon" type="Node2D" node_paths=PackedStringArray("fire_point")]
+show_behind_parent = true
+rotation = -0.136503
+script = ExtResource("1_hygou")
+projectile_scene = ExtResource("2_0kk8d")
+fire_point = NodePath("FirePoint")
+cooldown_time = 2.0
+damage = 1
+max_charges = 10
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+
+[node name="FirePoint" type="Marker2D" parent="."]
+position = Vector2(42.476, 0.262978)

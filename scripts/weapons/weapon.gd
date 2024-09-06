@@ -55,7 +55,7 @@ func generate_projectiles(destination: Vector2) -> void:
 	projectile.set_damage(damage)
 	# Attach the projectile to the tree
 	get_tree().root.add_child(projectile)
-	# Add the cooldown to the current time
+
 
 # Rotate the weapon so that it is facing the mouse position
 func point_at_mouse() -> void:
