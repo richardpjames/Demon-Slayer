@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://coqepxaf0dbx7"]
+[gd_scene load_steps=12 format=4 uid="uid://coqepxaf0dbx7"]
 
 [ext_resource type="TileSet" uid="uid://yi0es8klsdou" path="res://tiles/tiles.tres" id="1_eld2y"]
 [ext_resource type="PackedScene" uid="uid://bga08ako617jr" path="res://scenes/player/player.tscn" id="2_id1wt"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bidlbshk7kk32" path="res://scenes/enemies/void.tscn" id="5_imftg"]
 [ext_resource type="PackedScene" uid="uid://c2n56kgy5jvyd" path="res://scenes/enemies/demon.tscn" id="5_sl2ev"]
 [ext_resource type="PackedScene" uid="uid://d4c7yn5ihktqi" path="res://scenes/fx/fade_in.tscn" id="6_6f383"]
+[ext_resource type="PackedScene" uid="uid://cnl0mvelf3iw0" path="res://scenes/enemies/black_knight.tscn" id="6_nsm1e"]
 [ext_resource type="PackedScene" uid="uid://bxx83uwyeut2i" path="res://scenes/environment/level_teleporter.tscn" id="7_j5r13"]
 [ext_resource type="PackedScene" uid="uid://dcr8bemaliytj" path="res://scenes/ui/you_win.tscn" id="8_tessp"]
 [ext_resource type="PackedScene" uid="uid://3bee4jccawrq" path="res://scenes/environment/statue.tscn" id="9_4gyoh"]
@@ -66,20 +67,17 @@ position = Vector2(7670, -3967)
 
 [node name="Room Four" type="Node2D" parent="Enemies"]
 
-[node name="Void2" parent="Enemies/Room Four" instance=ExtResource("5_imftg")]
-position = Vector2(661, -5149)
-
-[node name="Void3" parent="Enemies/Room Four" instance=ExtResource("5_imftg")]
-position = Vector2(689, -7090)
-
-[node name="Demon" parent="Enemies/Room Four" instance=ExtResource("5_sl2ev")]
-position = Vector2(1651, -6105)
+[node name="Demon" parent="Enemies/Room Four" instance=ExtResource("6_nsm1e")]
+position = Vector2(1618, -4904)
 
 [node name="Demon2" parent="Enemies/Room Four" instance=ExtResource("5_sl2ev")]
-position = Vector2(1611, -7022)
+position = Vector2(871, -5605)
 
 [node name="Demon3" parent="Enemies/Room Four" instance=ExtResource("5_sl2ev")]
-position = Vector2(1594, -4985)
+position = Vector2(2398, -5605)
+
+[node name="Demon4" parent="Enemies/Room Four" instance=ExtResource("5_sl2ev")]
+position = Vector2(1581, -5946)
 
 [node name="FadeIn" parent="." instance=ExtResource("6_6f383")]
 
